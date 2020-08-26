@@ -27,12 +27,6 @@ namespace GR.Laromedel.AccessPortal.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureContainer(ServiceRegistry services)
         {
-            services
-                .AddControllers()
-                .AddNewtonsoftJson();
-
-            services.AddSignalR();
-
             IoC.Initialize(services);
         }
 
