@@ -1,0 +1,9 @@
+{
+  "name": "gr.laromedel.access-portal.web",
+  "version": "0.0.0",
+  "description": "GR.Laromedel.AccessPortal.Web",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  }
+}
