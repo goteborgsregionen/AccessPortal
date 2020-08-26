@@ -17,6 +17,8 @@ namespace GR.Laromedel.AccessPortal.Api
 {
     public class Startup
     {
+        readonly string AllowOrigins = "_allowOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -34,6 +36,15 @@ namespace GR.Laromedel.AccessPortal.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: AllowOrigins,
+                                  builder => 
+                                  {
+                                      builder.WithOrigins("*");
+                                  });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +56,8 @@ namespace GR.Laromedel.AccessPortal.Api
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(AllowOrigins);
 
             app.UseRouting();
 
