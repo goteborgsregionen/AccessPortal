@@ -351,3 +351,4 @@ MigrationBackup/
 
 # Web specific ignores
 GR.Laromedel.AccessPortal.Web/dist
+GR.Laromedel.AccessPortal.Web/.env
