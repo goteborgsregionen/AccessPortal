@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GR.Laromedel.AccessPortal.Api.Init;
+using Lamar;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -21,6 +23,18 @@ namespace GR.Laromedel.AccessPortal.Api
         }
 
         public IConfiguration Configuration { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureContainer(ServiceRegistry services)
+        {
+            services
+                .AddControllers()
+                .AddNewtonsoftJson();
+
+            services.AddSignalR();
+
+            IoC.Initialize(services);
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
