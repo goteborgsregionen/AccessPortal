@@ -58,7 +58,7 @@ jobs:
         octo push --package="./packages/GR.Laromedel.AccessPortal.Web.$PACKAGE_VERSION.zip" --server="${{ secrets.OCTOPUS_SERVER }}" --apiKey="${{ secrets.OCTOPUS_APIKEY }}"
 
     - name: Create and Deploy Release
-      run: octo create-release --project="AccessPortal" --packageVersion="$PACKAGE_VERSION" --package="GR.Laromedel.AccessPortal.Web:*" --releaseNumber="$PACKAGE_VERSION" --server="${{ secrets.OCTOPUS_SERVER }}" --apiKey="${{ secrets.OCTOPUS_APIKEY }}" --space="$OCTOPUS_SPACE_NAME" --deployTo="$OCTOPUS_ENVIRONMENT_NAME"
+      run: octo create-release --project="AccessPortal" --package="GR.Laromedel.AccessPortal.Web:$PACKAGE_VERSION"  --releaseNumber="$PACKAGE_VERSION" --server="${{ secrets.OCTOPUS_SERVER }}" --apiKey="${{ secrets.OCTOPUS_APIKEY }}" --space="$OCTOPUS_SPACE_NAME" --deployTo="$OCTOPUS_ENVIRONMENT_NAME"
         
         
         
