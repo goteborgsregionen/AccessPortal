@@ -1,9 +1,13 @@
-name: Node.js CI
+name: Deploy Web
 
-on: [push]
+on: 
+  push:
+    branches:
+      - master
+    paths:
+      - 'GR.Laromedel.AccessPortal.Web/**'
 
 env:
-    PACKAGE_PREFIX: 2020.1.1
     OCTOPUS_PROJECT_NAME: AccessPortal
     OCTOPUS_SPACE_NAME: Default
     OCTOPUS_ENVIRONMENT_NAME: Läromedel PP Test
@@ -35,11 +39,9 @@ jobs:
         API_URL: testapi.accessportal.goteborgsregionen.se
         CI: true
     
-    # existerande dist katalog
-    
     - name: Set version
       id: set-version
-      run: echo "::set-env name=PACKAGE_VERSION::$PACKAGE_PREFIX.$GITHUB_RUN_NUMBER"
+      run: echo "::set-env name=PACKAGE_VERSION::$GITHUB_SHA.web"
  
     - name: Install Octopus CLI
       run: |

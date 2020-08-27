@@ -1,15 +1,19 @@
-name: Package Api
+name: Deploy Api
 
-on:
+on: 
   push:
     branches:
       - master
+    paths:
+      - 'GR.Laromedel.AccessPortal.Api/**'
+      - 'GR.Laromedel.AccessPortal.Business/**'
+      - 'GR.Laromedel.AccessPortal.Services/**'
 
 env:
-    PACKAGE_PREFIX: 2020.1.1
     OCTOPUS_PROJECT_NAME: AccessPortal
     OCTOPUS_SPACE_NAME: Default
     OCTOPUS_ENVIRONMENT_NAME: Läromedel PP Test
+
 jobs:
   build:
 
@@ -20,7 +24,7 @@ jobs:
       
     - name: Set version
       id: set-version
-      run: echo "::set-env name=PACKAGE_VERSION::${env:PACKAGE_PREFIX}.${env:GITHUB_RUN_NUMBER}"
+      run: echo "::set-env name=PACKAGE_VERSION::${env:GITHUB_SHA}.api"
       shell: powershell
     
     - name: Make package directories
