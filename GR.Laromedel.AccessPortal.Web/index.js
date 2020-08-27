@@ -28,7 +28,7 @@ const App = function () {
   
   return (
     <div>
-      <h1>Licenses!</h1>
+      <h1>Licenses!!</h1>
       {licenses.map(license =>
         <License
           key={license.title}
