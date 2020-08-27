@@ -1,0 +1,63 @@
+name: Node.js CI
+
+on: [push]
+
+env:
+    PACKAGE_PREFIX: 2020.1.1
+    OCTOPUS_PROJECT_NAME: AccessPortal
+    OCTOPUS_SPACE_NAME: Default
+    OCTOPUS_ENVIRONMENT_NAME: Läromedel PP Test
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: GR.Laromedel.AccessPortal.Web
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Read .nvmrc
+      run: NVMRC=$(cat .nvmrc)
+
+    - name: Use Node.js (.nvmrc)
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${NVMRC}
+
+    - run: npm install
+
+    - run: npm run build
+      env:
+        API_URL: testapi.accessportal.goteborgsregionen.se
+        CI: true
+    
+    # existerande dist katalog
+    
+    - name: Set version
+      id: set-version
+      run: echo "::set-env name=PACKAGE_VERSION::$PACKAGE_PREFIX.$GITHUB_RUN_NUMBER"
+ 
+    - name: Install Octopus CLI
+      run: |
+        sudo apt update && sudo apt install --no-install-recommends gnupg curl ca-certificates apt-transport-https && \
+        curl -sSfL https://apt.octopus.com/public.key | sudo apt-key add - && \
+        sudo sh -c "echo deb https://apt.octopus.com/ stable main > /etc/apt/sources.list.d/octopus.com.list" && \
+        sudo apt update && sudo apt install octopuscli 
+    
+    - name: Package and Push to Octopus
+      run: |
+        octo pack --id="GR.Laromedel.AccessPortal.Web" --format="Zip" --version="$PACKAGE_VERSION" --basePath="./dist" --outFolder="./packages"
+
+        octo push --package="./packages/GR.Laromedel.AccessPortal.Web.$PACKAGE_VERSION.zip" --server="${{ secrets.OCTOPUS_SERVER }}" --apiKey="${{ secrets.OCTOPUS_APIKEY }}"
+
+    - name: Create and Deploy Release
+      run: octo create-release --project="AccessPortal" --packageVersion="$PACKAGE_VERSION" --releaseNumber="$PACKAGE_VERSION" --server="${{ secrets.OCTOPUS_SERVER }}" --apiKey="${{ secrets.OCTOPUS_APIKEY }}" --space="$OCTOPUS_SPACE_NAME" --deployTo="$OCTOPUS_ENVIRONMENT_NAME"
+        
+        
+        
+        
+        
+        
+        
