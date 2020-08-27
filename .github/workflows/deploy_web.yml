@@ -18,13 +18,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+  
     - name: Read .nvmrc
-      run: NVMRC=$(cat .nvmrc)
+      run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+      id: nvm
 
-    - name: Use Node.js (.nvmrc)
+    - name: Setup node
       uses: actions/setup-node@v1
       with:
-        node-version: ${NVMRC}
+        node-version: '${{ steps.nvm.outputs.NVMRC }}'
 
     - run: npm install
 
