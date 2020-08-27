@@ -8,6 +8,7 @@ on:
       - 'GR.Laromedel.AccessPortal.Web/**'
 
 env:
+    PACKAGE_PREFIX: 2020.1.1
     OCTOPUS_PROJECT_NAME: AccessPortal
     OCTOPUS_SPACE_NAME: Default
     OCTOPUS_ENVIRONMENT_NAME: Läromedel PP Test
@@ -41,7 +42,7 @@ jobs:
     
     - name: Set version
       id: set-version
-      run: echo "::set-env name=PACKAGE_VERSION::$GITHUB_SHA.web"
+      run: echo "::set-env name=PACKAGE_VERSION::$PACKAGE_PREFIX.$GITHUB_RUN_NUMBER-web"
  
     - name: Install Octopus CLI
       run: |

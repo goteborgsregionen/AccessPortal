@@ -10,13 +10,13 @@ on:
       - 'GR.Laromedel.AccessPortal.Services/**'
 
 env:
+    PACKAGE_PREFIX: 2020.1.1
     OCTOPUS_PROJECT_NAME: AccessPortal
     OCTOPUS_SPACE_NAME: Default
     OCTOPUS_ENVIRONMENT_NAME: Läromedel PP Test
 
 jobs:
   build:
-
     runs-on: windows-latest
 
     steps:
@@ -24,7 +24,7 @@ jobs:
       
     - name: Set version
       id: set-version
-      run: echo "::set-env name=PACKAGE_VERSION::${env:GITHUB_SHA}.api"
+      run: echo "::set-env name=PACKAGE_VERSION::${env:PACKAGE_PREFIX}.${env:GITHUB_RUN_NUMBER}-api"
       shell: powershell
     
     - name: Make package directories
