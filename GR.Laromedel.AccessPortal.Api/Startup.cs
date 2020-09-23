@@ -68,6 +68,9 @@ namespace GR.Laromedel.AccessPortal.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseExceptionHandler("/api/errors/500");
+            app.UseStatusCodePagesWithReExecute("/api/errors/{0}");
+
             app.UseHttpsRedirection();
 
             app.UseCors(AllowOrigins);
