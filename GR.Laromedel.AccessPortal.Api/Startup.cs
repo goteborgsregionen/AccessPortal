@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GR.Laromedel.AccessPortal.Api.Configuration;
 using GR.Laromedel.AccessPortal.Api.Init;
 using Lamar;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,6 +37,16 @@ namespace GR.Laromedel.AccessPortal.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var apiConfiguration = Configuration.GetSection(nameof(ApiConfiguration)).Get<ApiConfiguration>();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.Authority = apiConfiguration.Authority;
+
+                    // if you are using API resources, you can specify the name here
+                    options.Audience = apiConfiguration.Audience;
+                });
+
             services.AddControllers();
 
             services.AddCors(options =>
@@ -45,6 +57,7 @@ namespace GR.Laromedel.AccessPortal.Api
                                       builder.WithOrigins("*");
                                   });
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
