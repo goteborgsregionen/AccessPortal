@@ -28,7 +28,7 @@ function App() {
     <CssBaseline />
       <Container>
         <Header />
-        <Box> 
+        <Box pt="1rem"> 
           <LicenseList />
         </Box>
       </Container> 

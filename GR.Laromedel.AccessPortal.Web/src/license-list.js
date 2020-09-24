@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 const License = function ({ title, description }) {
   const classes = useStyles()
   return (
-    <Grid item xs={3}>
+    <Grid item xs={6} md={3}>
       <Card className={classes.card}>
         <Typography variant="h5" component="h1">{title}</Typography>
         <Typography variant="body1" className={classes.cardBody}>{description}</Typography>
@@ -49,7 +49,7 @@ export default function LicenseList() {
     <div>
       <Grid 
         container
-        spacing={6}
+        spacing={4}
         direction="row"
         justify="flex-start"
         alignItems="flex-start"
