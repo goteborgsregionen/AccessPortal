@@ -6,7 +6,7 @@ namespace GR.Laromedel.AccessPortal.Services.Services
 {
     public class ResourceService : IResourceService
     {
-        public List<ResouceViewModel> GetResources()
+        public List<ResourceViewModel> GetResources()
         {
             throw new System.NotImplementedException();
         }

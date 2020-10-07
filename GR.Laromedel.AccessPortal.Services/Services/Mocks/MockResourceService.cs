@@ -6,11 +6,11 @@ namespace GR.Laromedel.AccessPortal.Services.Services.Mocks
 {
     public class MockResourceService : IResourceService
     {
-        public List<ResouceViewModel> GetResources()
+        public List<ResourceViewModel> GetResources()
         {
-            return new List<ResouceViewModel>
+            return new List<ResourceViewModel>
             {
-                new ResouceViewModel
+                new ResourceViewModel
                 {
                     Title = "Svenska i dag 7 Övningsbok",
                     Description =
@@ -30,7 +30,7 @@ namespace GR.Laromedel.AccessPortal.Services.Services.Mocks
                         }
                     }
                 },
-                new ResouceViewModel
+                new ResourceViewModel
                 {
                     Title = "Svenska i dag 8 Lärobok",
                     Description =
@@ -50,7 +50,7 @@ namespace GR.Laromedel.AccessPortal.Services.Services.Mocks
                         }
                     }
                 },
-                new ResouceViewModel
+                new ResourceViewModel
                 {
                     Title = "PULS Biologi 7-9 Fokus, fjärde upplagan",
                     Description =
@@ -70,7 +70,7 @@ namespace GR.Laromedel.AccessPortal.Services.Services.Mocks
                         }
                     }
                 },
-                new ResouceViewModel
+                new ResourceViewModel
                 {
                     Title = "PULS Fysik 7-9 Fokus, fjärde upplagan",
                     Description =
@@ -90,7 +90,7 @@ namespace GR.Laromedel.AccessPortal.Services.Services.Mocks
                         }
                     }
                 },
-                new ResouceViewModel
+                new ResourceViewModel
                 {
                     Title = "Summit matematik Elevbok Digital",
                     Description =
@@ -110,7 +110,7 @@ namespace GR.Laromedel.AccessPortal.Services.Services.Mocks
                         }
                     }
                 },
-                new ResouceViewModel
+                new ResourceViewModel
                 {
                     Title = "Un été très cool åk 7 Textbok",
                     Description =

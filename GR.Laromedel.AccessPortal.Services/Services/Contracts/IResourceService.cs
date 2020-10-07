@@ -5,6 +5,6 @@ namespace GR.Laromedel.AccessPortal.Services.Services.Contracts
 {
     public interface IResourceService
     {
-        List<ResouceViewModel> GetResources();
+        List<ResourceViewModel> GetResources();
     }
 }

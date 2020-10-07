@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GR.Laromedel.AccessPortal.Services.Models
 {
-    public class ResouceViewModel
+    public class ResourceViewModel
     {
         public string Title {get; set;}
         public string Description {get; set;}
