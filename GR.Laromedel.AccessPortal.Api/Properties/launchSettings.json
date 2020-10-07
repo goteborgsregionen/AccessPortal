@@ -20,7 +20,7 @@
     "GR.Laromedel.AccessPortal.Api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "resources",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
