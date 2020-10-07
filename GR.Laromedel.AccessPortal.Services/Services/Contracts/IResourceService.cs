@@ -3,8 +3,8 @@ using GR.Laromedel.AccessPortal.Services.Models;
 
 namespace GR.Laromedel.AccessPortal.Services.Services.Contracts
 {
-    public interface ILicenseService
+    public interface IResourceService
     {
-        List<LicenseViewModel> GetLicenses();
+        List<ResouceViewModel> GetResources();
     }
 }
