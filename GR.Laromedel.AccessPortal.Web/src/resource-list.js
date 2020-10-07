@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 const apiUrl = process.env.API_URL
 
-const License = function ({ title, description }) {
+const Resource = function ({ title, description }) {
   return (
     <div className="relative mr-4 flex-none">
       <img src={'https://via.placeholder.com/180x240'} />
@@ -14,29 +14,29 @@ const License = function ({ title, description }) {
   )
 }
 
-export default function LicenseList() {
-  const [licenses, setLicenses] = useState([])
+export default function ResourceList() {
+  const [resources, setResources] = useState([])
 
   useEffect(() => {
-    const fetchLicenses = async () => {
-      const response = await fetch(`${apiUrl}/license`)
+    const fetchResources = async () => {
+      const response = await fetch(`${apiUrl}/resources`)
       const json = await response.json()
 
-      setLicenses(json)
+      setResources(json)
     }
 
-    fetchLicenses()
+    fetchResources()
   }, [])
   
   return (
     <div className="relative w-full h-full">
       <div className="flex overflow-x-scroll">
         {
-          licenses.map(license =>
-            <License
-              key={license.title}
-              title={license.title}
-              description={license.description}
+          resources.map(resource =>
+            <Resource
+              key={resource.title}
+              title={resource.title}
+              description={resource.description}
             />
             )
           }
