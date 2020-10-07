@@ -1,4 +1,6 @@
-﻿using Lamar;
+﻿using GR.Laromedel.AccessPortal.Services.Services.Contracts;
+using GR.Laromedel.AccessPortal.Services.Services.Mocks;
+using Lamar;
 
 namespace GR.Laromedel.AccessPortal.Services.Init
 {
@@ -13,6 +15,9 @@ namespace GR.Laromedel.AccessPortal.Services.Init
                 scan.TheCallingAssembly();
                 scan.WithDefaultConventions();
             });
+
+            // for now
+            x.For<IResourceService>().Use<MockResourceService>();
         }
     }
 }
