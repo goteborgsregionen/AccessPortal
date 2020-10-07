@@ -10,19 +10,19 @@ namespace GR.Laromedel.AccessPortal.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class LicenseController : ControllerBase
+    public class ResourcesController : ControllerBase
     {
-        private readonly ILicenseService _licenseService;
+        private readonly IResourceService _resourceService;
 
-        public LicenseController(ILicenseService licenseService)
+        public ResourcesController(IResourceService resourceService)
         {
-            _licenseService = licenseService;
+            _resourceService = resourceService;
         }
 
         [HttpGet]
         public ActionResult Get()
         {
-            return Ok(_licenseService.GetLicenses());
+            return Ok(_resourceService.GetResources());
         }
     }
 }

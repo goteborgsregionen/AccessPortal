@@ -6,12 +6,12 @@ Consists of a [web site](/GR.Laromedel.AccessPortal.Web) using node and an API u
 ## Installation
 
 ## Usage
-*To start the API*
+To start the API
 ```
 dotnet run --project GR.Laromedel.AccessPortal.Api/
 ```
 
-*To start the UI*
+To start the UI
 ```
 cd *.Web && npm start
 ```
