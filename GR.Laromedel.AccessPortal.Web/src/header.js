@@ -1,82 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import ReactDOM from 'react-dom'
-import { InputBase, AppBar, Toolbar, Button, Typography } from '@material-ui/core'
-import { makeStyles, fade } from '@material-ui/core/styles'
-import { Search as SearchIcon } from '@material-ui/icons'
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  title: {
-    flexGrow: 1,
-  },
-  search: {
-      position: 'relative',
-      borderRadius: theme.shape.borderRadius,
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-      '&:hover': {
-        backgroundColor: fade(theme.palette.common.white, 0.35),
-      },
-      marginLeft: 0,
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(1),
-        width: 'auto',
-      },
-    },
-    searchIcon: {
-      padding: theme.spacing(2, 2),
-      height: '100%',
-      position: 'absolute',
-      pointerEvents: 'none',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    inputRoot: {
-      color: 'inherit',
-    },
-    inputInput: {
-      padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        width: '12ch',
-        '&:focus': {
-          width: '20ch',
-        },
-      },
-    },
-}))
+import React from 'react';
 
 export default function Header() {
-  const classes = useStyles()
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h4" className={classes.title}>
-            Åtkomstportalen
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Sök…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'sök' }}
-            />
-          </div>
-          <Button>Logga ut</Button>
-        </Toolbar>
-      </AppBar>
+    <div className="flex justify-between h-16 items-center mb-4">
+      <div className="text-lg">Åtkomstportalen</div>
+      <div>
+        <input className="bg-gray-300 rounded h-10 mr-4 placeholder-gray-600 w-64 px-2 outline-none focus:shadow-outline" type="text" placeholder="Sök..." aria-label="sök" />
+        <button className="h-10 px-4 rounded font-bold bg-green-700 text-white">Logga ut</button>
+      </div>
     </div>
   )
 }

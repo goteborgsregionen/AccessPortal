@@ -1,33 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import ReactDOM from 'react-dom'
-import { Grid, Card, Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
 
 const apiUrl = process.env.API_URL
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  card: {
-    padding: theme.spacing(2),
-    background: theme.palette.secondary.main,
-    color: theme.palette.secondary.contrastText,
-  },
-  cardBody: {
-    textAlign: 'justify',
-  }
-}))
-
 const License = function ({ title, description }) {
-  const classes = useStyles()
   return (
-    <Grid item xs={6} md={3}>
-      <Card className={classes.card}>
-        <Typography variant="h5" component="h1">{title}</Typography>
-        <Typography variant="body1" className={classes.cardBody}>{description}</Typography>
-      </Card>
-    </Grid>
+    <div className="relative mr-4 flex-none">
+      <img src={'https://via.placeholder.com/180x240'} />
+      <div className="absolute bg-gradient-to-t from-gray-900 to-transparent bottom-0 p-2">
+        <h4 className="text-white font-bold">{title}</h4>
+        <p className="text-white">{description.substring(0, 30)}...</p>
+      </div>
+    </div>
   )
 }
 
@@ -46,21 +29,19 @@ export default function LicenseList() {
   }, [])
   
   return (
-    <div>
-      <Grid 
-        container
-        spacing={4}
-        direction="row"
-        justify="flex-start"
-        alignItems="flex-start"
-      >
-      {licenses.map(license =>
-        <License
-          key={license.title}
-          title={license.title}
-          description={license.description}
-        />)}
-      </Grid>
+    <div className="relative w-full h-full">
+      <div className="flex overflow-x-scroll">
+        {
+          licenses.map(license =>
+            <License
+              key={license.title}
+              title={license.title}
+              description={license.description}
+            />
+            )
+          }
+      </div>
+      <div className="absolute z-20 top-0 right-0 h-full w-16 bg-gradient-to-l from-white to-transparent" />
     </div>
   )
 }

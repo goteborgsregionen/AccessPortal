@@ -1,38 +1,25 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Container, Box, CssBaseline } from '@material-ui/core'
-import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 import LicenseList from './license-list'
 import Header from './header'
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      light: '#dbffff',
-      main: '#a9cee0',
-      dark: '#799dae',
-      contrastText: '#000',
-    },
-    secondary: {
-      light: '#50a095',
-      main: '#1a7167',
-      dark: '#00453d',
-      contrastText: '#fff',
-    },
-  },
-})
+import Box from './general/box'
+import Container from './general/container'
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-    <CssBaseline />
-      <Container>
-        <Header />
-        <Box pt="1rem"> 
+    <Container>
+      <Header />
+      <Box>
+        <div className="mb-8">
+          <h2 className="text-lg font-bold mb-4">Svenska</h2>
           <LicenseList />
-        </Box>
-      </Container> 
-    </ThemeProvider>
+        </div>
+        <div>
+          <h2 className="text-lg font-bold mb-4">Engelska</h2>
+          <LicenseList />
+        </div>
+      </Box>
+    </Container> 
   )
 }
 
