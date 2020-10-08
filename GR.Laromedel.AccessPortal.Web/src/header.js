@@ -9,5 +9,5 @@ export default function Header() {
         <button className="h-10 px-4 rounded font-bold bg-green-700 text-white">Logga ut</button>
       </div>
     </div>
-  )
+  );
 }
