@@ -10,7 +10,6 @@ namespace GR.Laromedel.AccessPortal.Services.Services
 {
     public class ResourceService : IResourceService
     {
-
         public List<ResourceViewModel> GetResources()
         {
             var ids = new List<Guid> {
@@ -18,18 +17,21 @@ namespace GR.Laromedel.AccessPortal.Services.Services
                 new Guid("2FE43ED0-DBAA-4237-AEC0-00250094E163"),
                 new Guid("DDA76E85-F9DA-4AC4-8B23-0032ADC82AA8")
             };
-            using (var client = new HttpClient { BaseAddress = new Uri("https://apitest.laromedel.goteborgsregionen.se/PublicArticle/Get") })
+            using (
+                var client = new HttpClient { 
+                    BaseAddress = new Uri("https://apitest.laromedel.goteborgsregionen.se/PublicArticle/Get")
+                }
+            )
             {
-                var otherList = string.Join("&articleIds=", ids.Except(new List<Guid> { ids[0] }));
-                var getParameters = $"?articleIds={ids[0]}&articleIds={otherList}";
-                client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("applications/json"));
+                client.DefaultRequestHeaders.Accept.Add(
+                    new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("applications/json")
+                );
 
+                var getParameters = "?articleIds=" + string.Join("&articleIds=", ids);
                 var response = client.GetAsync(getParameters);
 
                 var content = response.Result.Content.ReadAsStringAsync().Result;
-
                 var models = JsonConvert.DeserializeObject<ResourceViewModel[]>(content);
-
                 return models.ToList();
             }
         }
