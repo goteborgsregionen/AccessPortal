@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GR.Laromedel.AccessPortal.B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GR.Laromedel.AccessPortal.Services", "GR.Laromedel.AccessPortal.Services\GR.Laromedel.AccessPortal.Services.csproj", "{5E3E95B7-432C-492C-8061-0AC131FABDCF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GR.Laromedel.AccessPortal.Infrastructure", "GR.Laromedel.AccessPortal.Infrastructure\GR.Laromedel.AccessPortal.Infrastructure.csproj", "{C062BBC6-9AA4-4252-8541-741BF0666EBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{5E3E95B7-432C-492C-8061-0AC131FABDCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E3E95B7-432C-492C-8061-0AC131FABDCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E3E95B7-432C-492C-8061-0AC131FABDCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C062BBC6-9AA4-4252-8541-741BF0666EBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C062BBC6-9AA4-4252-8541-741BF0666EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C062BBC6-9AA4-4252-8541-741BF0666EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C062BBC6-9AA4-4252-8541-741BF0666EBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
