@@ -4,7 +4,6 @@ import ResourceList from './resource-list';
 import Header from './header';
 import Box from './general/box';
 import Container from './general/container';
-import Filter from './filter';
 import { groupResourcesBySubject } from './utilities/resources';
 
 const apiUrl = process.env.API_URL;
@@ -23,15 +22,10 @@ function App() {
     fetchResources()
   }, []);
 
-  const subjects = ['Svenska', 'Engelska', 'Biologi', 'Matematik', 'Musik', 'Religion', 'Historia'];
-  const ages = ['F-3', '4-6', '7-9'];
-  const categories = ['Artiklar', 'Böcker', 'Film', 'Ljud', 'Spel'];
-
   return (
     <Container>
       <Header />
       <Box>
-        <Filter subjects={subjects} ages={ages} categories={categories} />
         {
           groupedResources.map(({ subject, resources }) => (
             <div key={subject} className="mb-8">
