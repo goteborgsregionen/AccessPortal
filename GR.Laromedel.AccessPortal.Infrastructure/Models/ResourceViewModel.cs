@@ -7,7 +7,7 @@ namespace GR.Laromedel.AccessPortal.Infrastructure.Models
     public class ResourceViewModel
     {
         public string Title { get; set; }
-        public string ResourceUri { get; set; }
+        public string ResourceUri => "http://example.com";
         public string ArticleNumber { get; set; }
         public string CollectionTitle { get; set; }
         public string CollectionPartNumber { get; set; } // like "2" or "2/10"
@@ -20,6 +20,6 @@ namespace GR.Laromedel.AccessPortal.Infrastructure.Models
         public string Languages { get; set; }
         public string SupplierName { get; set; }
         public List<string> Subjects { get; set; }
-        public List<string> Stage { get; set; }
+        public List<string> Grades { get; set; }
     }
 }

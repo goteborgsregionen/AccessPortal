@@ -13,9 +13,15 @@ namespace GR.Laromedel.AccessPortal.Services.Services
         public List<ResourceViewModel> GetResources()
         {
             var ids = new List<Guid> {
-                new Guid("3BE8E47E-5BDF-491C-8B8F-00173D6249AA"),
-                new Guid("2FE43ED0-DBAA-4237-AEC0-00250094E163"),
-                new Guid("DDA76E85-F9DA-4AC4-8B23-0032ADC82AA8")
+                new Guid("f747dbca-6556-4a25-8118-6b61d939d642"),
+                new Guid("dfca95b4-86ef-4df5-a859-7f5bea6ce32d"),
+                new Guid("037f2408-e350-4c83-8a63-fc397a1f6865"),
+                new Guid("d6d1c282-bcda-4bde-a10e-b0695ab6a71d"),
+                new Guid("5fe81ac0-868f-40cc-8a7b-cd3abc3b9638"),
+                new Guid("e75d519d-dc08-4db6-bf51-1df2d963237c"),
+                new Guid("a061ed3f-96b6-4dff-a1ee-4f170e1aac92"),
+                new Guid("54f166d8-8941-4215-8b39-66ff1bca2fbc"),
+                new Guid("9c211382-ced5-4ed3-bc0e-9c460a3ca6c3")
             };
             using (
                 var client = new HttpClient { 
@@ -24,7 +30,7 @@ namespace GR.Laromedel.AccessPortal.Services.Services
             )
             {
                 client.DefaultRequestHeaders.Accept.Add(
-                    new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("applications/json")
+                    new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json")
                 );
 
                 var getParameters = "?articleIds=" + string.Join("&articleIds=", ids);
