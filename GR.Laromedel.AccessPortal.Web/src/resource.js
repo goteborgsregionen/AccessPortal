@@ -7,7 +7,7 @@ export default function Resource({ data }) {
         href={data.resourceUri}
         target="_blank"
         className="block w-full mb-2 flex-none bg-cover bg-center rounded shadow"
-        style={{ backgroundImage: `url(${data.imageUri})`, paddingBottom: '100%' }}
+        style={{ backgroundImage: `url(${data.coverImageFull})`, paddingBottom: '100%' }}
       />
 
       <h4 className="font-bold text-sm ml-1">{data.title}</h4>

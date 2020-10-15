@@ -1,6 +1,6 @@
 export function groupResourcesBySubject(resources) {
   return resources.reduce((groupedResources, resource) => {
-    const subject = resource.classifications['Ämne'][0];
+    const subject = resource.subjects[0];
     const existingSubjectGroup = groupedResources.find(group => group.subject === subject);
 
     return [
