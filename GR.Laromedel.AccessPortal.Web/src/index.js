@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import ResourceList from './resource-list';
 import Header from './header';
+import Footer from './footer';
 import Box from './general/box';
 import Container from './general/container';
 import { groupResourcesBySubject } from './utilities/resources';
@@ -23,19 +24,22 @@ function App() {
   }, []);
 
   return (
-    <Container>
-      <Header />
-      <Box>
-        {
-          groupedResources.map(({ subject, resources }) => (
-            <div key={subject} className="mb-8">
-              <h2 className="text-lg font-bold mb-4">{subject}</h2>
-              <ResourceList resources={resources} />
-            </div>
-          ))
-        }
-      </Box>
-    </Container> 
+    <>
+      <Container>
+        <Header />
+        <Box>
+          {
+            groupedResources.map(({ subject, resources }) => (
+              <div key={subject} className="mb-8">
+                <h2 className="text-lg font-bold mb-4">{subject}</h2>
+                <ResourceList resources={resources} />
+              </div>
+            ))
+          }
+        </Box>
+      </Container>
+      <Footer />
+    </>
   )
 }
 

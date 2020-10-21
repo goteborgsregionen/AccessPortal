@@ -25,7 +25,7 @@ export default function Header() {
   return (
     <div className="mt-6 mb-10">
       <div className="flex justify-between items-center h-16 mb-4">
-        <img className="h-auto w-40" src={logo} />
+        <a href="/"><img className="h-auto w-40" src={logo} /></a>
         <div>
           <SearchInput />
         </div>
