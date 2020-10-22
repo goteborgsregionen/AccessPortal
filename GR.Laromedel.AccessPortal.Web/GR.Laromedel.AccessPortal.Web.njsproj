@@ -36,9 +36,6 @@
     </Content>
     <Content Include="package.json" />
     <Content Include="README.md" />
-    <Content Include="services\auth-service.js">
-      <SubType>Code</SubType>
-    </Content>
     <Content Include="src\config\oidcconfig.js" />
     <Content Include="src\filter.js" />
     <Content Include="src\footer.js" />
@@ -64,7 +61,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="js\" />
-    <Folder Include="services\" />
     <Folder Include="src\" />
     <Folder Include="src\general\" />
     <Folder Include="src\icons\" />
