@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SearchIcon from './icons/search';
 import logo from './images/gr_logo.png';
 
@@ -25,7 +26,7 @@ export default function Header() {
   return (
     <div className="mt-6 mb-10">
       <div className="flex justify-between items-center h-16 mb-4">
-        <a href="/"><img className="h-auto w-40" src={logo} /></a>
+        <Link to="/"><img className="h-auto w-40" src={logo} /></Link>
         <div>
           <SearchInput />
         </div>
