@@ -1,5 +1,5 @@
 import { UserManager } from 'oidc-client';
-import { oidcSettings } from '../oidcsettings';
+import { oidcSettings } from '../src/config/oidcsettings';
 
 const userManager = new UserManager(oidcSettings);
 
