@@ -39,6 +39,7 @@
     <Content Include="src\config\oidcconfig.js" />
     <Content Include="src\filter.js" />
     <Content Include="src\footer.js" />
+    <Content Include="src\general\authprovider.js" />
     <Content Include="src\general\box.js" />
     <Content Include="src\general\authcontainer.js" />
     <Content Include="src\general\container.js" />
@@ -57,6 +58,9 @@
     </Content>
     <Content Include="src\resource-list.js" />
     <Content Include="src\resource.js" />
+    <Content Include="src\resources.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\utilities\resources.js" />
   </ItemGroup>
   <ItemGroup>

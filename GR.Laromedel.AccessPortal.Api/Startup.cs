@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 
 namespace GR.Laromedel.AccessPortal.Api
 {
@@ -47,17 +48,18 @@ namespace GR.Laromedel.AccessPortal.Api
                     options.Audience = apiConfiguration.Audience;
                 });
 
-            services.AddControllers();
-
             services.AddCors(options =>
             {
                 options.AddPolicy(name: AllowOrigins,
                                   builder => 
                                   {
-                                      builder.WithOrigins("*");
+                                      builder.WithOrigins(apiConfiguration.SPAClient)
+                                          .AllowAnyHeader()
+                                          .AllowAnyMethod();
                                   });
             });
 
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,6 +79,7 @@ namespace GR.Laromedel.AccessPortal.Api
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
