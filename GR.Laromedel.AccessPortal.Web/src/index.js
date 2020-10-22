@@ -14,10 +14,12 @@ import { oidcConfig } from './config/oidcconfig';
 const apiUrl = process.env.API_URL;
 
 function App() {
+
     const [groupedResources, setGroupedResources] = useState([]);
 
     useEffect(() => {
         const fetchResources = async () => {
+
             const response = await fetch(`${apiUrl}/resources`)
             const resources = await response.json()
 
@@ -28,21 +30,25 @@ function App() {
     }, []);
 
     return (
-        <AuthProvider {...oidcConfig} onSignIn={() => window.location.search = ''}>
+        <AuthProvider {...oidcConfig} onSignIn={(user) => history.go('/dashboard', user)}>
             <AuthContainer>
                 <Container>
                     <Logout />
                     <Header />
-                    <Box>
-                        {
-                            groupedResources.map(({ subject, resources }) => (
-                                <div key={subject} className="mb-8">
-                                    <h2 className="text-lg font-bold mb-4">{subject}</h2>
-                                    <ResourceList resources={resources} />
-                                </div>
-                            ))
-                        }
-                    </Box>
+                    <Switch>
+                        <Route exact path="/">
+                            <Box>
+                                {
+                                    groupedResources.map(({ subject, resources }) => (
+                                        <div key={subject} className="mb-8">
+                                            <h2 className="text-lg font-bold mb-4">{subject}</h2>
+                                            <ResourceList resources={resources} />
+                                        </div>
+                                    ))
+                                }
+                            </Box>
+                        </Route>
+                    </Switch>
                 </Container>
                 <Footer />
             </AuthContainer>

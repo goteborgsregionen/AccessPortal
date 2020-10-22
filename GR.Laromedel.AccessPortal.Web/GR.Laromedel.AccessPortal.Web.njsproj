@@ -29,6 +29,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include=".babelrc" />
+    <Content Include=".env">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include=".env.example" />
     <Content Include=".nvmrc" />
     <Content Include="package.json" />
