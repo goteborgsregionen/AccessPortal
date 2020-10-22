@@ -1,4 +1,5 @@
-﻿using Lamar;
+﻿using GR.Laromedel.AccessPortal.Services.Services.Contracts;
+using Lamar;
 
 namespace GR.Laromedel.AccessPortal.Services.Init
 {
