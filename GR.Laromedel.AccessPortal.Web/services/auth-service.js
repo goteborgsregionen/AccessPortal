@@ -1,25 +1,27 @@
-const authHeader = () => {
-    const user = JSON.parse(localStorage.getItem('user'));
+import { UserManager } from 'oidc-client';
+import { oidcSettings } from '../oidcsettings';
 
-    if (user && user.accessToken) {
-        return { Authorization: 'Bearer ' + user.accessToken };
-    } else {
-        return {};
-    }
+const userManager = new UserManager(oidcSettings);
+
+export const getUser = () => {
+    return userManager.getUser();
 }
 
-const logout = () => {
-    localStorage.removeItem("user");
-};
+export const login = () => {
+    return userManager.signinRedirect();
+}
 
-const login = (response) => {
-    if (response.data.accessToken) {
-        localStorage.setItem("user", JSON.stringify(response.data));
-    }
+export const renewToken = () => {
+    userManager.signinSilent();
+}
+
+export const logout = () => {
+    userManager.signoutRedirect();
 }
 
 export default {
-    authHeader,
+    getUser,
     logout,
-    login
+    login,
+    renewToken
 };
