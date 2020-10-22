@@ -4,7 +4,7 @@ export const oidcConfig = {
     clientId: 'accessPortalClientLocalHost',
     redirectUri: 'http://localhost:1234',
     responseType: 'code',
-    scope: 'openid profile roles email'    
+    scope: 'openid profile roles email accessPortalApi'    
 };
 
 export default {
