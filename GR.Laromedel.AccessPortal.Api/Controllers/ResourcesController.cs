@@ -11,7 +11,7 @@ namespace GR.Laromedel.AccessPortal.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize]
+    //[Authorize]
     public class ResourcesController : ControllerBase
     {
         private readonly IResourceService _resourceService;
