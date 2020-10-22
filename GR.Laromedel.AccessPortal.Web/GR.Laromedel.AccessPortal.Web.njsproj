@@ -39,12 +39,6 @@
     <Content Include="services\auth-service.js">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="signin-callback.html">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="silent-renew.html">
-      <SubType>Code</SubType>
-    </Content>
     <Content Include="src\config\oidcconfig.js" />
     <Content Include="src\filter.js" />
     <Content Include="src\footer.js" />
