@@ -4,7 +4,7 @@ import logo from './images/gr_logo.png';
 
 function WelcomeMessage() {
   return (
-    <div className="rounded-2xl -mt-10 ml-48 rounded-tl-none w-96 p-4 bg-blue-300">
+    <div className="rounded-2xl -mt-10 ml-48 rounded-tl-none text-lg w-96 p-4 bg-blue-300">
       <p>
         Hej Maja! Välkommen till Åtkomstportalen! Här har vi samlat alla dina digitala lärresurser.
       </p>

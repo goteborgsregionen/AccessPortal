@@ -6,11 +6,11 @@ export default function Resource({ data }) {
       <a
         href={data.resourceUri}
         target="_blank"
-        className="block w-full mb-2 flex-none bg-cover bg-center rounded shadow"
+        className="block w-full mb-2 flex-none bg-cover bg-center rounded"
         style={{ backgroundImage: `url(${data.coverImageFull})`, paddingBottom: '100%' }}
       />
 
-      <h4 className="font-bold text-sm ml-1">{data.title}</h4>
+      <h4 className="ml-1">{data.title}</h4>
     </div>
   );
 }
