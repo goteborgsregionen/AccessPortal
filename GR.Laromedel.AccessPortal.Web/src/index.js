@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
+import ResourceDetails from './resource-details';
 import ResourceList from './resource-list';
 import Header from './header';
 import Box from './general/box';
@@ -21,6 +22,11 @@ function App() {
 
     fetchResources()
   }, []);
+
+  const resource = {
+    title: 'Biologi för alla',
+    subtitle: 'Cellerna som byggde världen'
+  };
 
   return (
     <Container>

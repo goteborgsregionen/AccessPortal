@@ -2,12 +2,28 @@ import React from 'react';
 import CopyIcon from './icons/copy'
 import ExternalLinkIcon from './icons/external-link'
 import MovieIcon from './icons/movie'
+import CloseIcon from './icons/close'
 
-export default function ResourceDetails() {
+function copyLink(link) {
+  return navigator.clipboard.writeText(link);
+}
+
+export default function ResourceDetails({ resource, onClose }) {
   return (
     <div className="bg-gray-100 rounded p-6 mb-12 w-11/12">
-      <h4 className="text-2xl">Biologi för alla</h4>
-      <h5 className="text-lg">Cellerna som byggde världen</h5>
+      <div className="flex justify-between items-start w-full">
+        <div>
+          <h4 className="text-2xl">{resource.title}</h4>
+          <h5 className="text-lg">Lorem ipsum dolor sit amet</h5>
+        </div>
+        <button
+          onClick={onClose}
+          className="text-xl flex items-center uppercase text-green-700 hover:text-green-800 focus:outline-none"
+        >
+          <CloseIcon />
+          <span className="mt-px ml-2">Stäng</span>
+        </button>
+      </div>
 
       <div className="flex mt-6 gap-8">
         <div className="w-1/3">
@@ -45,15 +61,22 @@ export default function ResourceDetails() {
           </p>
 
           <div className="flex justify-end gap-4">
-            <button className="flex items-center text-xl gap-2 px-6 py-3 rounded bg-gray-200 text-green-600 hover:bg-gray-300 focus:outline-none focus:shadow-outline">
+            <button
+              className="flex items-center text-xl gap-2 px-6 py-3 rounded bg-gray-200 text-green-600 hover:bg-gray-300 focus:outline-none focus:shadow-outline"
+              onClick={() => copyLink(resource.resourceUri)}
+            >
               <CopyIcon />
               Kopiera länk
             </button>
             
-            <button className="flex items-center text-xl gap-2 px-6 py-3 rounded bg-green-600 hover:bg-green-700 text-white focus:outline-none focus:shadow-outline">
+            <a 
+              href={resource.resourceUri}
+              target="_blank"
+              className="flex items-center text-xl gap-2 px-6 py-3 rounded bg-green-600 hover:bg-green-700 text-white focus:outline-none focus:shadow-outline"
+            >
               <ExternalLinkIcon />
               Öppna lärresurs
-            </button>
+            </a>
           </div>
         </div>
       </div>
