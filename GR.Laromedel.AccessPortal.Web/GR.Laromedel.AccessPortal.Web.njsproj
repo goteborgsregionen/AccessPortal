@@ -29,17 +29,47 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include=".babelrc" />
+    <Content Include=".env">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include=".env.example" />
     <Content Include=".nvmrc" />
-    <Content Include="index.html" />
-    <Content Include="index.js" />
-    <Content Include="server.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="src\config\oidcconfig.js" />
+    <Content Include="src\filter.js" />
+    <Content Include="src\footer.js" />
+    <Content Include="src\general\authprovider.js" />
+    <Content Include="src\general\box.js" />
+    <Content Include="src\general\authcontainer.js" />
+    <Content Include="src\general\container.js" />
+    <Content Include="src\hello.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\general\tag.js" />
+    <Content Include="src\header.js" />
+    <Content Include="src\icons\search.js" />
+    <Content Include="src\images\gr_logo.png" />
+    <Content Include="src\index.css" />
+    <Content Include="src\index.html" />
+    <Content Include="src\index.js" />
+    <Content Include="src\logout.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\resource-list.js" />
+    <Content Include="src\resource.js" />
+    <Content Include="src\resources.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\utilities\resources.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\" />
-    <Folder Include="src\portal\" />
+    <Folder Include="src\general\" />
+    <Folder Include="src\icons\" />
+    <Folder Include="src\images\" />
+    <Folder Include="src\config\" />
+    <Folder Include="src\utilities\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>

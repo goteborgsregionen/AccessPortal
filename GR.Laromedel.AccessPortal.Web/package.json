@@ -7,9 +7,11 @@
     "start": "parcel src/index.html"
   },
   "dependencies": {
+    "oidc-react": "^1.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-is": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "tailwindcss": "^1.8.11"
   },
   "devDependencies": {

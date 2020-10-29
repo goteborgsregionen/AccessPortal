@@ -1,48 +1,44 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import ResourceDetails from './resource-details';
-import ResourceList from './resource-list';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Logout from './logout';
 import Header from './header';
+import Footer from './footer';
 import Box from './general/box';
 import Container from './general/container';
-import { groupResourcesBySubject } from './utilities/resources';
-
-const apiUrl = process.env.API_URL;
+import AuthProvider from './general/authprovider';
+import AuthContainer from './general/authcontainer';
+import About from './about.js';
+import Privacy from './privacy.js';
+import Resources from './resources.js';
 
 function App() {
-  const [groupedResources, setGroupedResources] = useState([]);
-
-  useEffect(() => {
-    const fetchResources = async () => {
-      const response = await fetch(`${apiUrl}/resources`)
-      const resources = await response.json()
-
-      setGroupedResources(groupResourcesBySubject(resources))
-    }
-
-    fetchResources()
-  }, []);
-
-  const resource = {
-    title: 'Biologi för alla',
-    subtitle: 'Cellerna som byggde världen'
-  };
-
   return (
-    <Container>
-      <Header />
-      <Box>
-        {
-          groupedResources.map(({ subject, resources }) => (
-            <div key={subject} className="mb-8">
-              <h2 className="text-xl mb-4">{subject}</h2>
-              <ResourceList resources={resources} />
-            </div>
-          ))
-        }
-      </Box>
-    </Container> 
-  )
+    <BrowserRouter>
+      <AuthProvider>
+        <AuthContainer>
+          <Container>
+            <Logout />
+            <Header />
+            <Box>
+              <Switch>
+                <Route path="/about">
+                  <About />
+                </Route>
+                <Route path="/privacy">
+                  <Privacy />
+                </Route>
+                <Route path="/">
+                  <Resources />
+                </Route>
+              </Switch>
+            </Box>
+          </Container>
+          <Footer />
+        </AuthContainer>
+      </AuthProvider>
+    </BrowserRouter>
+  );
 }
 
 ReactDOM.render(<App />, document.getElementById('app'))

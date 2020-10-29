@@ -1,12 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SearchIcon from './icons/search';
 import logo from './images/gr_logo.png';
+import { useAuth } from 'oidc-react';
 
-function WelcomeMessage() {
+function WelcomeMessage({ name }) {
   return (
     <div className="rounded-2xl -mt-10 ml-48 rounded-tl-none text-lg w-96 p-4 bg-blue-300">
       <p>
-        Hej Maja! Välkommen till Åtkomstportalen! Här har vi samlat alla dina digitala lärresurser.
+        Hej {name}! Välkommen till Åtkomstportalen! Här har vi samlat alla dina digitala lärresurser.
       </p>
     </div>
   );
@@ -22,15 +24,21 @@ function SearchInput() {
 }
 
 export default function Header() {
+  const auth = useAuth();
+
   return (
     <div className="mt-6 mb-10">
       <div className="flex justify-between items-center h-16 mb-4">
-        <img className="h-auto w-40" src={logo} />
+        <Link to="/"><img className="h-auto w-40" src={logo} /></Link>
         <div>
           <SearchInput />
         </div>
       </div>
-      <WelcomeMessage />
+      {
+        auth.userData && (
+          <WelcomeMessage name={auth.userData.profile.name} />
+        )
+      }
     </div>
   );
 }
