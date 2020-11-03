@@ -8,7 +8,8 @@ function WelcomeMessage({ name }) {
   return (
     <div className="rounded-2xl -mt-10 ml-48 rounded-tl-none text-lg w-96 p-4 bg-blue-300">
       <p>
-        Hej {name}! Välkommen till Åtkomstportalen! Här har vi samlat alla dina digitala lärresurser.
+        Hej {name}! Välkommen till Åtkomstportalen! Här har vi samlat alla dina digitala
+        lärresurser.
       </p>
     </div>
   );
@@ -29,16 +30,14 @@ export default function Header() {
   return (
     <div className="mt-6 mb-10">
       <div className="flex justify-between items-center h-16 mb-4">
-        <Link to="/"><img className="h-auto w-40" src={logo} /></Link>
+        <Link to="/">
+          <img className="h-auto w-40" src={logo} />
+        </Link>
         <div>
           <SearchInput />
         </div>
       </div>
-      {
-        auth.userData && (
-          <WelcomeMessage name={auth.userData.profile.name} />
-        )
-      }
+      {auth.userData && <WelcomeMessage name={auth.userData.profile.name} />}
     </div>
   );
 }

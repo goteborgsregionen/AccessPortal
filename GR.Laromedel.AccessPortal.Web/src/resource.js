@@ -7,11 +7,8 @@ export default function Resource({ data, isSelected, onClick }) {
         onClick={onClick}
         target="_blank"
         className={
-          "relative overflow-hidden block w-full mb-2 flex-none rounded-lg cursor-pointer shadow-inner" + (
-          isSelected
-            ? " border-4 border-green-500"
-            : " border-4 border-white"
-          )
+          'relative overflow-hidden block w-full mb-2 flex-none rounded-lg cursor-pointer shadow-inner' +
+          (isSelected ? ' border-4 border-green-500' : ' border-4 border-white')
         }
         role="button"
         style={{

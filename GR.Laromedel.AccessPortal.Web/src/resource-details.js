@@ -1,8 +1,8 @@
 import React from 'react';
-import CopyIcon from './icons/copy'
-import ExternalLinkIcon from './icons/external-link'
-import MovieIcon from './icons/movie'
-import CloseIcon from './icons/close'
+import CopyIcon from './icons/copy';
+import ExternalLinkIcon from './icons/external-link';
+import MovieIcon from './icons/movie';
+import CloseIcon from './icons/close';
 
 function copyLink(link) {
   return navigator.clipboard.writeText(link);
@@ -57,7 +57,12 @@ export default function ResourceDetails({ resource, onClose }) {
         </div>
         <div className="w-2/3">
           <p className="font-serif leading-normal overflow-y-scroll h-24 pr-6 mb-12">
-            Biologi för alla  är riktad till åk 7-9 och fungerar som en introduktion till ämnet biologi. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim laboris nisi ut aliquip ex ea commodo consequat. Duis consectetur adipiscing elit, sed do dolore magna aliqua. Ut enim laboris nisi ut aliquip ex ea commodo consequat. Duis consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Biologi för alla är riktad till åk 7-9 och fungerar som en introduktion till ämnet
+            biologi. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim laboris nisi ut aliquip ex ea
+            commodo consequat. Duis consectetur adipiscing elit, sed do dolore magna aliqua. Ut enim
+            laboris nisi ut aliquip ex ea commodo consequat. Duis consectetur adipiscing elit, sed
+            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
 
           <div className="flex justify-end gap-4">
@@ -68,8 +73,8 @@ export default function ResourceDetails({ resource, onClose }) {
               <CopyIcon />
               Kopiera länk
             </button>
-            
-            <a 
+
+            <a
               href={resource.resourceUri}
               target="_blank"
               className="flex items-center text-xl gap-2 px-6 py-3 rounded bg-green-600 hover:bg-green-700 text-white focus:outline-none focus:shadow-outline"
