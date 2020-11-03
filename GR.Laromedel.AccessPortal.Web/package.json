@@ -4,6 +4,7 @@
   "description": "GR.Laromedel.AccessPortal.Web",
   "scripts": {
     "build": "parcel build src/index.html",
+    "prettier": "prettier src -w",
     "start": "parcel src/index.html"
   },
   "dependencies": {
@@ -21,6 +22,7 @@
     "@babel/preset-react": "^7.10.4",
     "autoprefixer": "^9.8.6",
     "parcel-bundler": "^1.12.4",
-    "postcss-modules": "^3.2.2"
+    "postcss-modules": "^3.2.2",
+    "prettier": "^2.1.2"
   }
 }

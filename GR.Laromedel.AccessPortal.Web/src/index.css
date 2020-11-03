@@ -8,9 +8,9 @@
   font-family: 'Conduit';
   src: url('./fonts/a5a0edc0-b571-4275-9c51-3dfeba35b75a.eot');
   src: url('./fonts/a5a0edc0-b571-4275-9c51-3dfeba35b75a.eot') format('eot'),
-       url('./fonts/a81af59b-a5d9-4e96-a7cc-919403c0d86c.woff2') format('woff2'),
-       url('./fonts/e93ee223-5d52-4bdf-a113-c6c4c8936824.woff') format('woff'),
-       url('./fonts/ccdadc2e-26c9-48a5-9c52-9c3cc58e9930.ttf') format('truetype');
+    url('./fonts/a81af59b-a5d9-4e96-a7cc-919403c0d86c.woff2') format('woff2'),
+    url('./fonts/e93ee223-5d52-4bdf-a113-c6c4c8936824.woff') format('woff'),
+    url('./fonts/ccdadc2e-26c9-48a5-9c52-9c3cc58e9930.ttf') format('truetype');
   font-weight: 400;
 }
 
@@ -18,8 +18,8 @@
   font-family: 'Conduit';
   src: url('./fonts/45fa0132-0858-4e18-9594-5a070788a059.eot');
   src: url('./fonts/45fa0132-0858-4e18-9594-5a070788a059.eot') format('eot'),
-       url('./fonts/0f250d3b-13fd-469c-a4ec-9f9984165dea.woff2') format('woff2'),
-       url('./fonts/e924c59f-bc21-471f-ad1b-cefd0c1a6315.woff') format('woff'),
-       url('./fonts/13b88c12-e5f0-46c4-932a-57fe881b7c46.ttf') format('truetype');
+    url('./fonts/0f250d3b-13fd-469c-a4ec-9f9984165dea.woff2') format('woff2'),
+    url('./fonts/e924c59f-bc21-471f-ad1b-cefd0c1a6315.woff') format('woff'),
+    url('./fonts/13b88c12-e5f0-46c4-932a-57fe881b7c46.ttf') format('truetype');
   font-weight: 200;
 }
