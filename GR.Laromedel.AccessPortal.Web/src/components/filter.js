@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Tag from './general/tag';
+import Tag from './common/tag';
 
 export default function Filter({ subjects, ages, categories }) {
   const [selectedSubjects, setSelectedSubjects] = useState([]);

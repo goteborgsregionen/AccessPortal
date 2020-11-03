@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Logout from './logout';
-import Header from './header';
-import Footer from './footer';
-import Box from './general/box';
-import Container from './general/container';
-import AuthProvider from './general/authprovider';
-import AuthContainer from './general/authcontainer';
-import About from './about.js';
-import Privacy from './privacy.js';
-import Resources from './resources.js';
+import Logout from './components/logout';
+import Header from './components/header';
+import Footer from './components/footer';
+import Box from './components/common/box';
+import Container from './components/common/container';
+import AuthProvider from './components/auth/authprovider';
+import AuthContainer from './components/auth/authcontainer';
+import About from './components/about';
+import Privacy from './components/privacy';
+import Resources from './components/resources';
 
 function App() {
   return (
