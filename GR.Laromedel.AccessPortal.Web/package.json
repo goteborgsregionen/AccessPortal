@@ -4,6 +4,7 @@
   "description": "GR.Laromedel.AccessPortal.Web",
   "scripts": {
     "build": "parcel build src/index.html",
+    "prettier": "prettier src -w",
     "start": "parcel src/index.html"
   },
   "dependencies": {
