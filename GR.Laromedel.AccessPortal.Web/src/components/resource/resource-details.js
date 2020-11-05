@@ -1,14 +1,12 @@
 import React from 'react';
-import CopyIcon from './icons/copy';
-import ExternalLinkIcon from './icons/external-link';
-import MovieIcon from './icons/movie';
-import CloseIcon from './icons/close';
-
-function copyLink(link) {
-  return navigator.clipboard.writeText(link);
-}
+import CopyIcon from '../../assets/icons/copy';
+import ExternalLinkIcon from '../../assets/icons/external-link';
+import MovieIcon from '../../assets/icons/movie';
+import CloseIcon from '../../assets/icons/close';
 
 export default function ResourceDetails({ resource, onClose }) {
+  const copyLink = (link) => navigator.clipboard.writeText(link);
+
   return (
     <div className="bg-gray-100 rounded p-6 mb-12 w-11/12">
       <div className="flex justify-between items-start w-full">

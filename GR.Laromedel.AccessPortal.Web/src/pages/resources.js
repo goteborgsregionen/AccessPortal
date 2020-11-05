@@ -1,6 +1,6 @@
 ﻿import React, { useEffect, useState } from 'react';
-import ResourceList from './resource-list';
-import { groupResourcesBySubject } from './utilities/resources';
+import ResourceList from '../components/resource/resource-list';
+import { groupResourcesBySubject } from '../utilities/resources';
 import { useAuth } from 'oidc-react';
 
 const apiUrl = process.env.API_URL;

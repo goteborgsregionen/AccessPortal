@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SearchIcon from './icons/search';
-import logo from './images/gr_logo.png';
+import SearchIcon from '../assets/icons/search';
+import logo from '../assets/images/gr_logo.png';
 import { useAuth } from 'oidc-react';
 
 function WelcomeMessage({ name }) {
