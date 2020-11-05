@@ -6,11 +6,11 @@ import Header from './components/header';
 import Footer from './components/footer';
 import Box from './components/common/box';
 import Container from './components/common/container';
-import AuthProvider from './components/auth/authprovider';
-import AuthContainer from './components/auth/authcontainer';
-import About from './components/about';
-import Privacy from './components/privacy';
-import Resources from './components/resources';
+import AuthProvider from './components/auth/auth-provider';
+import AuthContainer from './components/auth/auth-container';
+import About from './pages/about';
+import Privacy from './pages/privacy';
+import Resources from './pages/resources';
 
 function App() {
   return (

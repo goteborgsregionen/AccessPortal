@@ -1,8 +1,8 @@
 import React from 'react';
-import CopyIcon from '../assets/icons/copy';
-import ExternalLinkIcon from '../assets/icons/external-link';
-import MovieIcon from '../assets/icons/movie';
-import CloseIcon from '../assets/icons/close';
+import CopyIcon from '../../assets/icons/copy';
+import ExternalLinkIcon from '../../assets/icons/external-link';
+import MovieIcon from '../../assets/icons/movie';
+import CloseIcon from '../../assets/icons/close';
 
 export default function ResourceDetails({ resource, onClose }) {
   const copyLink = (link) => navigator.clipboard.writeText(link);
