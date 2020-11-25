@@ -2,12 +2,16 @@
 import ResourceList from '../components/resource/resource-list';
 import { groupResourcesBySubject } from '../utilities/resources';
 import { useAuth } from 'oidc-react';
+import { useHistory } from 'react-router-dom';
 
 const apiUrl = process.env.API_URL;
 
 export default () => {
   const [groupedResources, setGroupedResources] = useState([]);
   const auth = useAuth();
+  let history = useHistory()
+
+  if (!auth.userData) history.push('/unauthorized')
 
   useEffect(() => {
     const fetchResources = async () => {

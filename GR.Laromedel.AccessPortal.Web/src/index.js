@@ -11,23 +11,24 @@ import AuthContainer from './components/auth/auth-container';
 import About from './pages/about';
 import Privacy from './pages/privacy';
 import Resources from './pages/resources';
+import Unauthorized from './pages/unauthorized';
+import Restricted from './components/auth/auth-restricted';
 
 function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <AuthContainer>
+    <AuthProvider>
+      {/*<AuthContainer>*/} 
           <Container>
             <Logout />
             <Header />
             <Box>
               <Switch>
-                <Route path="/about">
-                  <About />
+              <Route path="/unauthorized">
+                  <Unauthorized />
                 </Route>
-                <Route path="/privacy">
-                  <Privacy />
-                </Route>
+                <Restricted path="/about" exact component={About} />
+                <Restricted path="/privacy" exact component={Privacy} />
                 <Route path="/">
                   <Resources />
                 </Route>
@@ -35,7 +36,7 @@ function App() {
             </Box>
           </Container>
           <Footer />
-        </AuthContainer>
+        {/*</AuthContainer>*/} 
       </AuthProvider>
     </BrowserRouter>
   );
