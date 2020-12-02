@@ -9,9 +9,9 @@ const apiUrl = process.env.API_URL;
 export default () => {
   const [groupedResources, setGroupedResources] = useState([]);
   const auth = useAuth();
-  let history = useHistory()
+  let history = useHistory();
 
-  if (!auth.userData) history.push('/unauthorized')
+  if (!auth.userData) history.push('/unauthorized');
 
   useEffect(() => {
     const fetchResources = async () => {

@@ -45,12 +45,12 @@ function UnauthenticatedApp() {
         <Header />
         <Box>
           <Switch>
-              <Route path="/about" exact component={About} />
-              <Route path="/privacy" exact component={Privacy} />
-              <Route path="/">
+            <Route path="/about" exact component={About} />
+            <Route path="/privacy" exact component={Privacy} />
+            <Route path="/">
               <Welcome />
-              </Route>
-            </Switch>
+            </Route>
+          </Switch>
         </Box>
       </Container>
       <Footer />
