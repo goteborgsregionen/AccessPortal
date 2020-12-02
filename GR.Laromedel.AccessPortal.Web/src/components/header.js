@@ -33,11 +33,9 @@ export default function Header() {
         <Link to="/">
           <img className="h-auto w-40" src={logo} />
         </Link>
-        <div>
-          <SearchInput />
-        </div>
+        <div>{auth && <SearchInput />}</div>
       </div>
-      {auth.userData && <WelcomeMessage name={auth.userData.profile.name} />}
+      {auth && auth.userData && <WelcomeMessage name={auth.userData.profile.name} />}
     </div>
   );
 }
