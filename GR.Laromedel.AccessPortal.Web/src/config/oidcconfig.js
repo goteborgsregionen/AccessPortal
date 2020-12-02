@@ -2,7 +2,7 @@ export const oidcConfig = {
   autoSignIn: true,
   authority: 'https://gridpstsidentity20201020044704.azurewebsites.net',
   clientId: 'accessPortalClientLocalHost',
-  redirectUri: 'http://localhost:1234/signin-callback',
+  redirectUri: 'http://localhost:1234/atkomstportalen/signin-callback',
   responseType: 'code',
   scope: 'openid profile roles email accessPortalApi',
 };

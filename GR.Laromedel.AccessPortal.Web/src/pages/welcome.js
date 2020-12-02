@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Unauthorized() {
+export default function Welcome() {
   return (
     <>
       <h1 className="text-xl font-bold mb-4">Logga in för att komma åt denna sidan</h1>

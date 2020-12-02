@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Logout from './components/logout';
 import Header from './components/header';
 import Footer from './components/footer';
@@ -11,35 +11,58 @@ import AuthContainer from './components/auth/auth-container';
 import About from './pages/about';
 import Privacy from './pages/privacy';
 import Resources from './pages/resources';
-import Unauthorized from './pages/unauthorized';
-import Restricted from './components/auth/auth-restricted';
+import Welcome from './pages/welcome';
 
-function App() {
+function AuthenticatedApp() {
   return (
-    <BrowserRouter>
     <AuthProvider>
-      {/*<AuthContainer>*/} 
-          <Container>
-            <Logout />
-            <Header />
-            <Box>
-              <Switch>
-              <Route path="/unauthorized">
-                  <Unauthorized />
-                </Route>
-                <Restricted path="/about" exact component={About} />
-                <Restricted path="/privacy" exact component={Privacy} />
-                <Route path="/">
-                  <Resources />
-                </Route>
-              </Switch>
-            </Box>
-          </Container>
-          <Footer />
-        {/*</AuthContainer>*/} 
-      </AuthProvider>
-    </BrowserRouter>
+    <AuthContainer>
+      <Container>
+        <Logout />
+        <Header />
+        <Box>
+          <Switch>
+            <Route path="/about" exact component={About} />
+            <Route path="/privacy" exact component={Privacy} />
+            <Route path="/">
+              <Resources />
+            </Route>
+          </Switch>
+        </Box>
+      </Container>
+      <Footer />
+    </AuthContainer>
+    </AuthProvider>
   );
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+function UnauthenticatedApp() {
+  return (
+    <Container>
+      <Welcome />
+    </Container>
+
+  );
+}
+
+function App() {
+  const signedIn = true
+  return (
+    <Switch>
+      <Route path="/atkomstportalen">
+        <AuthenticatedApp/>
+      </Route>
+      <Route path="/">
+        <UnauthenticatedApp/>
+      </Route>
+    </Switch>
+
+  )
+}
+
+ReactDOM.render(
+  <BrowserRouter>
+      <App/>
+  </BrowserRouter>, 
+  document.getElementById('app')
+);
