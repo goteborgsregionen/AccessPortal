@@ -44,7 +44,13 @@ function UnauthenticatedApp() {
         <Login />
         <Header />
         <Box>
-          <Welcome />
+          <Switch>
+              <Route path="/about" exact component={About} />
+              <Route path="/privacy" exact component={Privacy} />
+              <Route path="/">
+              <Welcome />
+              </Route>
+            </Switch>
         </Box>
       </Container>
       <Footer />
