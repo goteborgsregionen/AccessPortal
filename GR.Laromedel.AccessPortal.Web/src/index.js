@@ -17,7 +17,7 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        {/* <AuthContainer> */}
+        <AuthContainer> 
         <Container>
           <Logout />
           <Header />
@@ -36,7 +36,7 @@ function App() {
           </Box>
         </Container>
         <Footer />
-        {/* </AuthContainer> */}
+        </AuthContainer>
       </AuthProvider>
     </BrowserRouter>
   );

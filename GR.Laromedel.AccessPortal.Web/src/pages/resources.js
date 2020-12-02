@@ -6,30 +6,43 @@ import { useAuth } from 'oidc-react';
 const apiUrl = process.env.API_URL;
 const mockdata = [
   {
-    resources: [{ title: 'hej' }, { title: 'hola' }],
+    resources: [{
+      title: '',
+      articleNumber: '', 
+      contributors: '',
+      coverImageFull: '',
+      supplierName: '',
+      isbn: '',
+      languages: 'Svenska',
+      description: '', 
+
+    }],
     subject: 'Matte',
   },
 ];
+
+
 
 export default () => {
   const [groupedResources, setGroupedResources] = useState([]);
   const auth = useAuth();
 
-  // useEffect(() => {
-  //   const fetchResources = async () => {
-  //     const user = await auth.userData;
-  //     const response = await fetch(`${apiUrl}/resources`, {
-  //       headers: {
-  //         Authorization: 'Bearer ' + user.access_token,
-  //       },
-  //     });
-  //     const resources = await response.json();
+   useEffect(() => {
+     const fetchResources = async () => {
+       const user = await auth.userData;
+       console.log('userData', user)
+       const response = await fetch(`${apiUrl}/resources`, {
+         headers: {
+           Authorization: 'Bearer ' + user.access_token,
+         },
+       });
+       const resources = await response.json();
+       console.log("fetched resources",resources)
+       setGroupedResources(groupResourcesBySubject(resources));
+     };
 
-  //     setGroupedResources(groupResourcesBySubject(resources));
-  //   };
-
-  //   fetchResources();
-  // }, []);
+     fetchResources();
+   }, []);
 
   useEffect(() => {
     setGroupedResources(mockdata);
