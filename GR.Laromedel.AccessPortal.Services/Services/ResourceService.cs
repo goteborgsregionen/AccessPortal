@@ -15,10 +15,10 @@ namespace GR.Laromedel.AccessPortal.Services.Services
             var licences = new List<LicenseModel>();
             
             //TODO: get userId
-            var userId ="BE33FDED-73B1-4741-9550-6BB28C30C661";
+            var userId ="EAAFBD71-DF06-4984-A0DE-D143499D7FD0";
 
 
-            using (var client = new HttpClient { BaseAddress = new Uri("https://localhost:55001/licenses/Get")})
+            using (var client = new HttpClient { BaseAddress = new Uri("http://localhost:55001/licences/Get") })
             {
                 client.DefaultRequestHeaders.Accept.Add(
                     new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json")
@@ -45,7 +45,7 @@ namespace GR.Laromedel.AccessPortal.Services.Services
                 var content = response.Result.Content.ReadAsStringAsync().Result;
                 var models = JsonConvert.DeserializeObject<ResourceViewModel[]>(content).ToList();
 
-                 models.ForEach(x => x.ResourceUri = licences.Single(y => y.ArticleId == x.ArticleId).Url);
+                 models.ForEach(x => x.ResourceUri = licences.First(y => y.ArticleId == x.ArticleId).Url);
 
                  return models;
             }
