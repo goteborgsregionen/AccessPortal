@@ -16,28 +16,28 @@ function App() {
   // make some kind of check here if teacher or pupil is signed in, just to sh
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <AuthContainer> 
-        <Container>
-          <Logout />
-          <Header />
-          <Box>
-            <Switch>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/privacy">
-                <Privacy />
-              </Route>
-              <Route path="/">
-                <Resources />
-              </Route>
-            </Switch>
-          </Box>
-        </Container>
-        <Footer />
-        </AuthContainer>
-      </AuthProvider>
+      {/*<AuthProvider>*/}
+        {/*<AuthContainer>*/}
+          <Container>
+            {/*<Logout />*/}
+            {/*<Header />*/}
+            <Box>
+              <Switch>
+                <Route path="/about">
+                  <About />
+                </Route>
+                <Route path="/privacy">
+                  <Privacy />
+                </Route>
+                <Route path="/">
+                  <Resources />
+                </Route>
+              </Switch>
+            </Box>
+          </Container>
+          <Footer />
+        {/*</AuthContainer>*/}
+      {/*</AuthProvider>*/}
     </BrowserRouter>
   );
 }

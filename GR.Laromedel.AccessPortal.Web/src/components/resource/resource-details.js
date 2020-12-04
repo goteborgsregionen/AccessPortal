@@ -3,6 +3,7 @@ import CopyIcon from '../../assets/icons/copy';
 import ExternalLinkIcon from '../../assets/icons/external-link';
 import MovieIcon from '../../assets/icons/movie';
 import CloseIcon from '../../assets/icons/close';
+import parse from 'html-react-parser';
 
 export default function ResourceDetails({ resource, onClose }) {
   const copyLink = (link) => navigator.clipboard.writeText(link);
@@ -12,7 +13,7 @@ export default function ResourceDetails({ resource, onClose }) {
       <div className="flex justify-between items-start w-full">
         <div>
           <h4 className="text-2xl">{resource.title}</h4>
-          <h5 className="text-lg">Lorem ipsum dolor sit amet</h5>
+          {/*<h5 className="text-lg">Lorem ipsum dolor sit amet</h5>*/}
         </div>
         <button
           onClick={onClose}
@@ -26,42 +27,34 @@ export default function ResourceDetails({ resource, onClose }) {
       <div className="flex mt-6 gap-8">
         <div className="w-1/3">
           <div className="flex items-center mb-3">
-            <p className="text-lg border-r border-gray-400 mr-2 pr-2">Biologi</p>
-            <p className="text-lg border-r border-gray-400 mr-2 pr-2">Åk 7-9</p>
-            <MovieIcon />
-          </div>
+  <p className="text-lg border-r border-gray-400 mr-2 pr-2">{resource.subjects.map(subject => subject)}</p>
+            <p className="text-lg border-r border-gray-400 mr-2 pr-2">{resource.grades.map(grade => grade)}</p>
+            {/*<MovieIcon />*/}
+  </div>
           <div className="mb-3">
-            <p className="mb-1">
-              <span className="font-thin">Manusförfattare:</span> Niclas Darwin
-            </p>
-            <p className="mb-1">
-              <span className="font-thin">Längd:</span> 48 min
-            </p>
+            {resource.contributors && <p className="mb-1">
+              <span className="font-thin">Författare:</span> {resource.contributors}
+            </p>}
             <p>
-              <span className="font-thin">Språk:</span> Svenska
+              <span className="font-thin">Språk:</span> {resource.languages}
             </p>
           </div>
           <div className="border border-gray-300 p-2">
             <p className="mb-1">
-              <span className="font-thin">Förlag:</span> Bergs Education
+              <span className="font-thin">Förlag:</span> {resource.supplierName}
             </p>
             <p className="mb-1">
-              <span className="font-thin">Upplaga:</span> 2
+              <span className="font-thin">Upplaga:</span> {resource.edition}
             </p>
             <p>
-              <span className="font-thin">Artikelnummer:</span> 548930910-8
+              <span className="font-thin">Artikelnummer:</span> {resource.articleNumber}
             </p>
           </div>
         </div>
         <div className="w-2/3">
-          <p className="font-serif leading-normal overflow-y-scroll h-24 pr-6 mb-12">
-            Biologi för alla är riktad till åk 7-9 och fungerar som en introduktion till ämnet
-            biologi. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim laboris nisi ut aliquip ex ea
-            commodo consequat. Duis consectetur adipiscing elit, sed do dolore magna aliqua. Ut enim
-            laboris nisi ut aliquip ex ea commodo consequat. Duis consectetur adipiscing elit, sed
-            do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
+          <div className="font-serif leading-normal overflow-y-scroll h-24 pr-6 mb-12">
+            {parse(resource.description)}
+          </div>
 
           <div className="flex justify-end gap-4">
             <button
