@@ -59,6 +59,7 @@ function UnauthenticatedApp() {
 }
 
 function App() {
+  // make some kind of check here if teacher or pupil is signed in, just to show
   return (
     <Switch>
       <Route path="/atkomstportalen">

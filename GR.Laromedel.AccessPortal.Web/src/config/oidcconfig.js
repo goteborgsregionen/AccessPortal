@@ -1,6 +1,6 @@
 export const oidcConfig = {
   autoSignIn: true,
-  authority: 'https://gridpstsidentity20201020044704.azurewebsites.net',
+  authority: 'https://idptest.int.indra2.se',
   clientId: 'accessPortalClientLocalHost',
   redirectUri: 'http://localhost:1234/atkomstportalen/signin-callback',
   responseType: 'code',
