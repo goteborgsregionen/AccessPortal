@@ -36,7 +36,7 @@ export default () => {
   const [groupedResources, setGroupedResources] = useState([]);
   const auth = useAuth();
 
-  /*useEffect(() => {
+  useEffect(() => {
     const fetchResources = async () => {
       const user = await auth.userData;
       const response = await fetch(`${apiUrl}/resources`, {
@@ -51,10 +51,10 @@ export default () => {
 
     fetchResources();
   }, []);
-  */
-useEffect(() => {
+  
+/*useEffect(() => {
   setGroupedResources(mockdata)
-})
+})*/
 
 
   return (
