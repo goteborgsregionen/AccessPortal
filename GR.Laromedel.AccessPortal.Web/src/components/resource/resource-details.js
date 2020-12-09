@@ -27,14 +27,20 @@ export default function ResourceDetails({ resource, onClose }) {
       <div className="flex mt-6 gap-8">
         <div className="w-1/3">
           <div className="flex items-center mb-3">
-  <p className="text-lg border-r border-gray-400 mr-2 pr-2">{resource.subjects.map(subject => subject)}</p>
-            <p className="text-lg border-r border-gray-400 mr-2 pr-2">{resource.grades.map(grade => grade)}</p>
+            <p className="text-lg border-r border-gray-400 mr-2 pr-2">
+              {resource.subjects.map((subject) => subject)}
+            </p>
+            <p className="text-lg border-r border-gray-400 mr-2 pr-2">
+              {resource.grades.map((grade) => grade)}
+            </p>
             {/*<MovieIcon />*/}
-  </div>
+          </div>
           <div className="mb-3">
-            {resource.contributors && <p className="mb-1">
-              <span className="font-thin">Författare:</span> {resource.contributors}
-            </p>}
+            {resource.contributors && (
+              <p className="mb-1">
+                <span className="font-thin">Författare:</span> {resource.contributors}
+              </p>
+            )}
             <p>
               <span className="font-thin">Språk:</span> {resource.languages}
             </p>

@@ -28,10 +28,10 @@ export default () => {
   return (
     <>
       {groupedResources.map(({ subject, resources }) => (
-          <div key={subject} className="mb-8">
-            <h2 className="text-lg font-bold mb-4">{subject}</h2>
-            <ResourceList resources={resources} />
-          </div>
+        <div key={subject} className="mb-8">
+          <h2 className="text-lg font-bold mb-4">{subject}</h2>
+          <ResourceList resources={resources} />
+        </div>
       ))}
     </>
   );
