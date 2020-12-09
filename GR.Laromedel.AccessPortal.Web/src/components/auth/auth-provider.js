@@ -7,7 +7,7 @@ export default function AuthContainer({ children }) {
   let history = useHistory();
 
   return (
-    <AuthProvider {...oidcConfig} onSignIn={(user) => history.push('/')}>
+    <AuthProvider {...oidcConfig} onSignIn={(user) => history.push('/atkomstportalen')}>
       {children}
     </AuthProvider>
   );
