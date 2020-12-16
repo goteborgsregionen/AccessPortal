@@ -20,25 +20,25 @@ import Layout from './components/layout';
 function AuthenticatedApp() {
   return (
     <AuthProvider>
-        <AuthContainer>
-          <Layout>
-            <Container>
-              <Logout />
-              <Header />
-              <Box>
-                <Switch>
-                  <Route path="/about" exact component={About} />
-                  <Route path="/privacy" exact component={Privacy} />
-                  <Route path="/">
-                    <Resources />
-                  </Route>
-                </Switch>
-              </Box>
-            </Container>
-            <Footer />
-          </Layout>
-        </AuthContainer>
-      </AuthProvider>
+      <AuthContainer>
+        <Layout>
+          <Container>
+            <Logout />
+            <Header />
+            <Box>
+              <Switch>
+                <Route path="/about" exact component={About} />
+                <Route path="/privacy" exact component={Privacy} />
+                <Route path="/">
+                  <Resources />
+                </Route>
+              </Switch>
+            </Box>
+          </Container>
+          <Footer />
+        </Layout>
+      </AuthContainer>
+    </AuthProvider>
   );
 }
 

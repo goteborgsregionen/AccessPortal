@@ -27,7 +27,7 @@ function SearchInput() {
 }
 
 export default function Header() {
-  const { theme, setTheme } = React.useContext(ThemeContext)
+  const { theme, setTheme } = React.useContext(ThemeContext);
   const auth = useAuth();
 
   return (
