@@ -1,7 +1,26 @@
+:root {
+  @apply .base;
+}
+
+.base {
+  --color-bg-primary: #F6F8F8;
+  --color-bg-secondary: #ffffff;
+  --color-text-primary: #263635;
+  --color-welcome-msg: #A9CEE0;
+  --color-text-accent: #2b6cb0;
+}
+
+.student {
+  --color-bg-primary: #0E1211;
+  --color-bg-secondary: #1F2524;
+  --color-text-primary: #fff;
+  --color-text-secondary: #0E1211;
+  --color-welcome-msg: #F4A38C;
+  --color-text-accent: #81e6d9;
+}
+
 @tailwind base;
-
 @tailwind components;
-
 @tailwind utilities;
 
 @font-face {

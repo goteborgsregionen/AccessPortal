@@ -12,6 +12,21 @@ module.exports = {
   important: false,
   separator: ':',
   theme: {
+    extend: {
+      colors: {
+        fade: 'var(--color-bg-secondary)'
+      },
+      backgroundColor: {
+        primary: 'var(--color-bg-primary)',
+        secondary: 'var(--color-bg-secondary)',
+        welcome: 'var(--color-welcome-msg)'
+      },
+      textColor: {
+        accent: 'var(--color-text-accent)',
+        primary: 'var(--color-text-primary)',
+        secondary: 'var(--color-text-secondary)',
+      },
+    },
     screens: {
       sm: '640px',
       md: '768px',
