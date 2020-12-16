@@ -1,7 +1,30 @@
+:root {
+  @apply .base;
+}
+
+.base {
+  --color-bg-primary: #f6f8f8;
+  --color-bg-secondary: #ffffff;
+  --color-text-primary: #263635;
+  --color-welcome-msg: #a9cee0;
+  --color-button-close: #1a7167;
+  --color-button-hover: #114b47;
+  --color-text-accent: #2b6cb0;
+}
+
+.student {
+  --color-bg-primary: #0e1211;
+  --color-bg-secondary: #1f2524;
+  --color-text-primary: #fff;
+  --color-text-secondary: #0e1211;
+  --color-welcome-msg: #f4a38c;
+  --color-text-accent: #81e6d9;
+  --color-button-close: #fff;
+  --color-button-hover: #95d0c8;
+}
+
 @tailwind base;
-
 @tailwind components;
-
 @tailwind utilities;
 
 @font-face {

@@ -9,7 +9,7 @@ export default function ResourceDetails({ resource, onClose }) {
   const copyLink = (link) => navigator.clipboard.writeText(link);
 
   return (
-    <div className="bg-gray-100 rounded p-6 mb-12 w-11/12">
+    <div className="bg-primary rounded p-6 mb-12 w-11/12 text-primary">
       <div className="flex justify-between items-start w-full">
         <div>
           <h4 className="text-2xl">{resource.title}</h4>
@@ -17,7 +17,7 @@ export default function ResourceDetails({ resource, onClose }) {
         </div>
         <button
           onClick={onClose}
-          className="text-xl flex items-center uppercase text-green-700 hover:text-green-800 focus:outline-none"
+          className="text-xl flex items-center uppercase text-close-primary hover:text-close-hover focus:outline-none"
         >
           <CloseIcon />
           <span className="mt-px ml-2">Stäng</span>

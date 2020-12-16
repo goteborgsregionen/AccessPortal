@@ -2,11 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SearchIcon from '../assets/icons/search';
 import logo from '../assets/images/gr_logo.png';
+import logoWhite from '../assets/images/gr_logo_white.png';
 import { useAuth } from 'oidc-react';
+import { ThemeContext } from '../utilities/themeContext';
 
 function WelcomeMessage({ name }) {
   return (
-    <div className="rounded-2xl -mt-10 ml-48 rounded-tl-none text-lg w-96 p-4 bg-blue-300">
+    <div className="rounded-2xl -mt-10 ml-48 rounded-tl-none text-lg w-96 p-4 bg-welcome">
       <p>
         Hej {name}! Välkommen till Åtkomstportalen! Här har vi samlat alla dina digitala
         lärresurser.
@@ -25,13 +27,14 @@ function SearchInput() {
 }
 
 export default function Header() {
+  const { theme, setTheme } = React.useContext(ThemeContext);
   const auth = useAuth();
 
   return (
     <div className="mt-6 mb-10">
       <div className="flex justify-between items-center h-16 mb-4">
         <Link to="/">
-          <img className="h-auto w-40" src={logo} />
+          <img className="h-auto w-40 fill-red-300" src={theme === 'base' ? logo : logoWhite} />
         </Link>
         <div>{auth && <SearchInput />}</div>
       </div>

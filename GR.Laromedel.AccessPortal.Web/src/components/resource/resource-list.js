@@ -8,7 +8,7 @@ export default function ResourceList({ resources }) {
   return (
     <>
       <div className="relative w-full h-full">
-        <div className="flex overflow-x-scroll">
+        <div className={`flex ${resources.lenght > 4 && 'overflow-x-scroll'}`}>
           {resources.map((resource) => (
             <Resource
               key={resource.title}
@@ -18,7 +18,7 @@ export default function ResourceList({ resources }) {
             />
           ))}
         </div>
-        <div className="absolute z-20 top-0 right-0 h-full w-16 bg-gradient-to-l from-white to-transparent" />
+        <div className="absolute z-20 top-0 right-0 h-full w-16 bg-gradient-to-l from-fade to-transparent" />
       </div>
       {selectedResource && (
         <div className="mt-4">
