@@ -19,12 +19,16 @@ module.exports = {
       backgroundColor: {
         primary: 'var(--color-bg-primary)',
         secondary: 'var(--color-bg-secondary)',
-        welcome: 'var(--color-welcome-msg)'
+        welcome: 'var(--color-welcome-msg)',
       },
       textColor: {
         accent: 'var(--color-text-accent)',
         primary: 'var(--color-text-primary)',
         secondary: 'var(--color-text-secondary)',
+        close: {
+          primary: 'var(--color-button-close)',
+          hover: 'var(--color-button-hover)'
+        },
       },
     },
     screens: {

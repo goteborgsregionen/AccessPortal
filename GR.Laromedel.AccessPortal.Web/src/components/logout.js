@@ -9,7 +9,7 @@ export default () => {
       {auth.userData && (
         <button
           onClick={() => auth.signOutRedirect()}
-          className="mb-2 flex-none bg-cover bg-center rounded shadow p-2"
+          className="mb-2 flex-none bg-secondary bg-center rounded shadow p-2 text-primary"
         >
           Logga ut
         </button>

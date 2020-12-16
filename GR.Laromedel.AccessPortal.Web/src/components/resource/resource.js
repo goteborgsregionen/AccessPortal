@@ -21,7 +21,7 @@ export default function Resource({ data, isSelected, onClick }) {
         {/* <div className="absolute bg-green-500 w-16 h-16 top-0 right-0" style={{ borderRadius: '40%', marginTop: '-1.7rem', marginRight: '-1.7rem' }} /> */}
       </div>
 
-      <h4 className="ml-1">{data.title}</h4>
+      <h4 className="ml-1 text-primary">{data.title}</h4>
     </div>
   );
 }
