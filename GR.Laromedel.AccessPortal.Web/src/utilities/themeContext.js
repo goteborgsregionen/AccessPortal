@@ -27,11 +27,9 @@ const getInitialTheme = _ => {
       const root = window.document.documentElement
       let isStudent = false;
       
-      if (key && key.profile.role === 'IDPAdmin') {
+      if (key && key.profile.role === 'Student') {
         isStudent = true
       } 
-
-      console.log(key && key.profile.role === 'IDPAdmin')
 
       root.classList.remove(isStudent ? "student" : "base")
       root.classList.add(theme)

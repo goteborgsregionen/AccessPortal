@@ -4,7 +4,7 @@ import { oidcConfig } from '../config/oidcconfig';
 export default function Layout({ children }) {
     const { setTheme } = React.useContext(ThemeContext)
     const key = JSON.parse(sessionStorage.getItem(`oidc.user:${oidcConfig.authority}:${oidcConfig.clientId}`))
-    const isStudent = key.profile.role === 'IDPAdmin'
+    const isStudent = key.profile.role === 'Student'
 
 React.useEffect(() => {
     setTheme(isStudent ? "student" : "base")
