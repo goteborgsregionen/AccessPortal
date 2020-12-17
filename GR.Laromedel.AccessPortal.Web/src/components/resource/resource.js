@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Resource({ data, isSelected, onClick }) {
   return (
-    <div className="w-1/4 mr-4">
+    <div className="w-1/4 mr-4 flex-none">
       <div
         onClick={onClick}
         target="_blank"
