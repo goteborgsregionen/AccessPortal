@@ -20,7 +20,10 @@ function WelcomeMessage({ name }) {
 function SearchInput() {
   return (
     <div className="relative">
-      <input className="border border-gray-400 bg-white rounded-full pl-3 pr-8 h-8 w-56 focus:outline-none focus:shadow-outline" />
+      <input
+        className="border border-gray-400 bg-white rounded-full pl-3 pr-8 h-8 w-56 focus:outline-none focus:shadow-outline"
+        placeholder="Sök"
+      />
       <SearchIcon className="absolute right-0 top-0 mt-2 mr-3 h-4 w-4" />
     </div>
   );
