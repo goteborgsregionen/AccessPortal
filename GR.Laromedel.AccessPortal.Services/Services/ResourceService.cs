@@ -10,13 +10,10 @@ namespace GR.Laromedel.AccessPortal.Services.Services
 {
     public class ResourceService : IResourceService
     {
-        public List<ResourceViewModel> GetResources()
+        public List<ResourceViewModel> GetResources(string userId)
         {
             var licences = new List<LicenseModel>();
             
-            //TODO: get userId
-            var userId ="EAAFBD71-DF06-4984-A0DE-D143499D7FD0";
-
 
             using (var client = new HttpClient { BaseAddress = new Uri("http://localhost:55001/licences/Get") })
             {

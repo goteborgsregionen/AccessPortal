@@ -24,7 +24,14 @@ namespace GR.Laromedel.AccessPortal.Api.Controllers
         [HttpGet]
         public ActionResult Get()
         {
-            return Ok(_resourceService.GetResources());
+            var userId = User.Claims.FirstOrDefault(c => c.Type == "preferred_username").Value;
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized();
+            }
+
+            return Ok(_resourceService.GetResources(userId));
         }
     }
 }

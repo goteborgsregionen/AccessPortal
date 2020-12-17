@@ -2,8 +2,7 @@
 import ResourceList from '../components/resource/resource-list';
 import { groupResourcesBySubject } from '../utilities/resources';
 import { useAuth } from 'oidc-react';
-
-const apiUrl = process.env.API_URL;
+import apiUrl from '../utilities/apiUrl';
 
 export default () => {
   const [groupedResources, setGroupedResources] = useState([]);
