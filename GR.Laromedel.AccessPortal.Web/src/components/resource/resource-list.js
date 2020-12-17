@@ -4,7 +4,7 @@ import ResourceDetails from './resource-details';
 
 export default function ResourceList({ resources }) {
   const [selectedResource, setSelectedResource] = useState();
-  
+
   return (
     <>
       <div className="relative w-full h-full">
