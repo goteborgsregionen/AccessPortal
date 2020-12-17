@@ -8,7 +8,7 @@ export default function ResourceList({ resources }) {
   return (
     <>
       <div className="relative w-full h-full">
-        <div className={`flex ${resources.lenght > 4 && 'overflow-x-scroll'}`}>
+        <div className={`flex overflow-x-auto`}>
           {resources.map((resource) => (
             <Resource
               key={resource.title}
