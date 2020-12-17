@@ -4,6 +4,7 @@ import ExternalLinkIcon from '../../assets/icons/external-link';
 import MovieIcon from '../../assets/icons/movie';
 import CloseIcon from '../../assets/icons/close';
 import parse from 'html-react-parser';
+import apiUrl from '../../utilities/apiUrl';
 
 export default function ResourceDetails({ resource, onClose }) {
   const copyLink = (link) => navigator.clipboard.writeText(link);
@@ -72,7 +73,7 @@ export default function ResourceDetails({ resource, onClose }) {
             </button>
 
             <a
-              href={resource.resourceUri}
+              href={`${apiUrl}/redirection/?url=${resource.resourceUri}`}
               target="_blank"
               className="flex items-center text-xl gap-2 px-6 py-3 rounded bg-green-600 hover:bg-green-700 text-white focus:outline-none focus:shadow-outline"
             >
