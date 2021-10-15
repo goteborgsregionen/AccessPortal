@@ -34,41 +34,65 @@
     </Content>
     <Content Include=".env.example" />
     <Content Include=".nvmrc" />
+    <Content Include=".prettierrc" />
+    <Content Include="package-lock.json" />
     <Content Include="package.json" />
+    <Content Include="postcss.config.js" />
     <Content Include="README.md" />
+    <Content Include="src\assets\fonts\0f250d3b-13fd-469c-a4ec-9f9984165dea.woff2" />
+    <Content Include="src\assets\fonts\13b88c12-e5f0-46c4-932a-57fe881b7c46.ttf" />
+    <Content Include="src\assets\fonts\45fa0132-0858-4e18-9594-5a070788a059.eot" />
+    <Content Include="src\assets\fonts\a5a0edc0-b571-4275-9c51-3dfeba35b75a.eot" />
+    <Content Include="src\assets\fonts\a81af59b-a5d9-4e96-a7cc-919403c0d86c.woff2" />
+    <Content Include="src\assets\fonts\ccdadc2e-26c9-48a5-9c52-9c3cc58e9930.ttf" />
+    <Content Include="src\assets\fonts\e924c59f-bc21-471f-ad1b-cefd0c1a6315.woff" />
+    <Content Include="src\assets\fonts\e93ee223-5d52-4bdf-a113-c6c4c8936824.woff" />
+    <Content Include="src\assets\icons\close.js" />
+    <Content Include="src\assets\icons\copy.js" />
+    <Content Include="src\assets\icons\external-link.js" />
+    <Content Include="src\assets\icons\movie.js" />
+    <Content Include="src\assets\icons\search.js" />
+    <Content Include="src\assets\images\gr_logo.png" />
+    <Content Include="src\assets\images\gr_logo_white.png" />
+    <Content Include="src\components\auth\auth-container.js" />
+    <Content Include="src\components\auth\auth-provider.js" />
+    <Content Include="src\components\common\box.js" />
+    <Content Include="src\components\common\container.js" />
+    <Content Include="src\components\common\tag.js" />
+    <Content Include="src\components\filter.js" />
+    <Content Include="src\components\footer.js" />
+    <Content Include="src\components\header.js" />
+    <Content Include="src\components\layout.js" />
+    <Content Include="src\components\login.js" />
+    <Content Include="src\components\logout.js" />
+    <Content Include="src\components\resource\resource-details.js" />
+    <Content Include="src\components\resource\resource-list.js" />
+    <Content Include="src\components\resource\resource.js" />
     <Content Include="src\config\oidcconfig.js" />
-    <Content Include="src\filter.js" />
-    <Content Include="src\footer.js" />
-    <Content Include="src\general\authprovider.js" />
-    <Content Include="src\general\box.js" />
-    <Content Include="src\general\authcontainer.js" />
-    <Content Include="src\general\container.js" />
-    <Content Include="src\hello.js">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="src\general\tag.js" />
-    <Content Include="src\header.js" />
-    <Content Include="src\icons\search.js" />
-    <Content Include="src\images\gr_logo.png" />
     <Content Include="src\index.css" />
     <Content Include="src\index.html" />
     <Content Include="src\index.js" />
-    <Content Include="src\logout.js">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="src\resource-list.js" />
-    <Content Include="src\resource.js" />
-    <Content Include="src\resources.js">
-      <SubType>Code</SubType>
-    </Content>
+    <Content Include="src\pages\about.js" />
+    <Content Include="src\pages\privacy.js" />
+    <Content Include="src\pages\resources.js" />
+    <Content Include="src\pages\welcome.js" />
+    <Content Include="src\utilities\apiUrl.js" />
     <Content Include="src\utilities\resources.js" />
+    <Content Include="src\utilities\themeContext.js" />
+    <Content Include="tailwind.config.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\" />
-    <Folder Include="src\general\" />
-    <Folder Include="src\icons\" />
-    <Folder Include="src\images\" />
+    <Folder Include="src\assets\" />
+    <Folder Include="src\assets\fonts\" />
+    <Folder Include="src\assets\icons\" />
+    <Folder Include="src\assets\images\" />
+    <Folder Include="src\components\" />
+    <Folder Include="src\components\auth\" />
+    <Folder Include="src\components\common\" />
+    <Folder Include="src\components\resource\" />
     <Folder Include="src\config\" />
+    <Folder Include="src\pages\" />
     <Folder Include="src\utilities\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
