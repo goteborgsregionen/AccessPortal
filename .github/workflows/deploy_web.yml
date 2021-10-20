@@ -8,10 +8,11 @@ on:
       - 'GR.Laromedel.AccessPortal.Web/**'
 
 env:
-    PACKAGE_PREFIX: 2020.1.1
+    PACKAGE_PREFIX: 2021.1.1
     OCTOPUS_PROJECT_NAME: AccessPortal
     OCTOPUS_SPACE_NAME: Default
     OCTOPUS_ENVIRONMENT_NAME: Läromedel PP Test
+    ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
 jobs:
   build:
