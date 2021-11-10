@@ -1,10 +1,10 @@
 export const oidcConfig = {
   autoSignIn: true,
-  authority: 'https://idptest.int.indra2.se',
-  clientId: 'accessPortalClientLocalHost',
-  redirectUri: 'http://localhost:1234/atkomstportalen/signin-callback',
-  responseType: 'code',
-  scope: 'openid profile roles email accessPortalApi',
+    authority: process.env.IDP_AUTHORITY,
+    clientId: process.env.CLIENT_ID,
+    redirectUri: process.env.REDIRECT_URI,
+    responseType: 'code',
+    scope: 'openid profile roles email accessPortalApi',
 };
 
 export default {
