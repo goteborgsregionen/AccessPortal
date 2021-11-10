@@ -48,6 +48,9 @@ jobs:
       id: set-version
       run: echo "::set-env name=PACKAGE_VERSION::$PACKAGE_PREFIX.$GITHUB_RUN_NUMBER-web"
  
+      name: Copy web.config
+      run: sudo cp ./web.config ./dist/web.config
+
     - name: Install Octopus CLI
       run: |
         sudo apt update && sudo apt install --no-install-recommends gnupg curl ca-certificates apt-transport-https && \
