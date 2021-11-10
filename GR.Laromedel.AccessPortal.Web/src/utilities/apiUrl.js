@@ -1,3 +1,3 @@
-export const apiUrl = process.env.API_UTL || 'https://localhost:44376';
+export const apiUrl = process.env.API_URL;
 
 export default apiUrl;
