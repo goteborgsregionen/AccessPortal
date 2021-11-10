@@ -38,10 +38,10 @@ jobs:
 
     - run: npm run build
       env:
-        API_URL: https://testapi.accessportal.goteborgsregionen.se
+        API_URL: https://apidev.accessportal.goteborgsregionen.se 
         IDP_AUTHORITY: https://idptest.goteborgsregionen.se
         CLIENT_ID: accessPortalClient
-        REDIRECT_URI: https://test.accessportal.goteborgsregionen.se/atkomstportalen/signin-callback
+        REDIRECT_URI: https://dev.accessportal.goteborgsregionen.se/atkomstportalen/signin-callback
         CI: true
     
     - name: Set version
