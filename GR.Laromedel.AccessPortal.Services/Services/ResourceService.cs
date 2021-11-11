@@ -15,7 +15,7 @@ namespace GR.Laromedel.AccessPortal.Services.Services
             var licences = new List<LicenseModel>();
             
 
-            using (var client = new HttpClient { BaseAddress = new Uri("https://test.licensportalen.laromedel.goteborgsregionen.se/licences/Get") })
+            using (var client = new HttpClient { BaseAddress = new Uri("https://dev.licensportalen.laromedel.goteborgsregionen.se/licences/Get") })
             {
                 client.DefaultRequestHeaders.Accept.Add(
                     new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json")
