@@ -1,4 +1,4 @@
-name: Deploy Api
+name: Release Api
 
 on: 
   push:
