@@ -80,6 +80,9 @@
     <Content Include="src\utilities\resources.js" />
     <Content Include="src\utilities\themeContext.js" />
     <Content Include="tailwind.config.js" />
+    <Content Include="web.config">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\" />

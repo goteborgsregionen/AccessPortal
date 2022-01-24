@@ -24,7 +24,7 @@ namespace GR.Laromedel.AccessPortal.Api.Controllers
         [HttpGet]
         public ActionResult Get()
         {
-            var userId = User.Claims.FirstOrDefault(c => c.Type == "preferred_username").Value;
+            var userId = User.Claims.FirstOrDefault(c => c.Type == "uuid").Value;
 
             if (string.IsNullOrEmpty(userId))
             {
