@@ -3,19 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using GR.Laromedel.AccessPortal.Infrastructure.Models;
+using GR.Laromedel.AccessPortal.Services.Configuration;
 using GR.Laromedel.AccessPortal.Services.Services.Contracts;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
 namespace GR.Laromedel.AccessPortal.Services.Services
 {
     public class ResourceService : IResourceService
     {
+        private readonly IConfiguration _configuration;
+
+        public ResourceService(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         public List<ResourceViewModel> GetResources(string userId)
         {
             var licences = new List<LicenseModel>();
-            
 
-            using (var client = new HttpClient { BaseAddress = new Uri("https://dev.licensportalen.laromedel.goteborgsregionen.se/licences/Get") })
+            var apiConfiguration = _configuration.GetSection(nameof(ServiceConfiguration)).Get<ServiceConfiguration>();
+
+            using (var client = new HttpClient { BaseAddress = new Uri(apiConfiguration.LicensePortalUrl) })
             {
                 client.DefaultRequestHeaders.Accept.Add(
                     new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json")
@@ -24,11 +34,12 @@ namespace GR.Laromedel.AccessPortal.Services.Services
                 var getParameters = $"?id={userId}";
                 var response = client.GetAsync(getParameters);
 
+
                 var content = response.Result.Content.ReadAsStringAsync().Result;
                 licences = JsonConvert.DeserializeObject<LicenseModel[]>(content).ToList();
             }
 
-            using (var client = new HttpClient { BaseAddress = new Uri("https://apitest.laromedel.goteborgsregionen.se/PublicArticle/Get")})
+            using (var client = new HttpClient { BaseAddress = new Uri(apiConfiguration.LaromedelUrl)})
             {
                 client.DefaultRequestHeaders.Accept.Add(
                     new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json")
