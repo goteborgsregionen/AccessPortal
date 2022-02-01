@@ -3,7 +3,7 @@ name: Release Api
 on: 
   push:
     branches:
-      - 'release/**'
+      - 'releases/**'
     paths:
       - 'GR.Laromedel.AccessPortal.Api/**'
       - 'GR.Laromedel.AccessPortal.Business/**'
