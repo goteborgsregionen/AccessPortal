@@ -4,7 +4,7 @@ export const oidcConfig = {
     clientId: process.env.CLIENT_ID,
     redirectUri: process.env.REDIRECT_URI,
     responseType: 'code',
-    scope: 'openid profile roles email accessPortalApi uuid'
+    scope: 'openid profile roles email accessPortalApi'
 };
 
 export default {
