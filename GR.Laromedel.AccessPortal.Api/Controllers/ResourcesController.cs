@@ -27,9 +27,15 @@ namespace GR.Laromedel.AccessPortal.Api.Controllers
         [HttpGet]
         public ActionResult Get()
         {
-            _logger.LogDebug(Newtonsoft.Json.JsonConvert.SerializeObject(User));
+            //_logger.LogDebug(Newtonsoft.Json.JsonConvert.SerializeObject(User));
 
-            var userId = User.Claims.FirstOrDefault(c => c.Type == "email").Value;
+            var claims = User.Claims.ToList();
+            foreach (var claim in claims)
+            {
+                _logger.LogDebug($"{claim.Type} {claim.Value}");
+            }
+
+            var userId = User.Claims.FirstOrDefault(c => c.Type == "email")?.Value;
 
             if (string.IsNullOrEmpty(userId))
             {
