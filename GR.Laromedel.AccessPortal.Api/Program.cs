@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace GR.Laromedel.AccessPortal.Api
 {
@@ -20,6 +21,12 @@ namespace GR.Laromedel.AccessPortal.Api
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .UseLamar()
+                .UseSerilog((hostContext, loggerConfig) =>
+                {
+                    loggerConfig
+                        .ReadFrom.Configuration(hostContext.Configuration)
+                        .Enrich.WithProperty("ApplicationName", hostContext.HostingEnvironment.ApplicationName);
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
