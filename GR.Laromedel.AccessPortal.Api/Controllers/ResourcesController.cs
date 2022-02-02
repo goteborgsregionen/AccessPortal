@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using GR.Laromedel.AccessPortal.Services.Services.Contracts;
 using Microsoft.AspNetCore.Authorization;
@@ -27,18 +28,7 @@ namespace GR.Laromedel.AccessPortal.Api.Controllers
         [HttpGet]
         public ActionResult Get()
         {
-            //_logger.LogDebug(Newtonsoft.Json.JsonConvert.SerializeObject(User));
-
-            var claims = User.Claims.ToList();
-            _logger.LogInformation($"Antal claims {claims.Count()}");
-            foreach (var claim in claims)
-            {
-                _logger.LogInformation($"{claim.Type} {claim.Value}");
-            }
-
-            var userId = User.Claims.FirstOrDefault(c => c.Type == "uuid")?.Value;
-
-            _logger.LogInformation($"-----");
+            var userId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
 
             if (string.IsNullOrEmpty(userId))
             {
