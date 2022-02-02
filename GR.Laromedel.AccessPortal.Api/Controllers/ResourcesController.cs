@@ -6,6 +6,7 @@ using GR.Laromedel.AccessPortal.Services.Services.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace GR.Laromedel.AccessPortal.Api.Controllers
 {
@@ -15,15 +16,19 @@ namespace GR.Laromedel.AccessPortal.Api.Controllers
     public class ResourcesController : ControllerBase
     {
         private readonly IResourceService _resourceService;
+        private readonly ILogger<ResourcesController> _logger;
 
-        public ResourcesController(IResourceService resourceService)
+        public ResourcesController(IResourceService resourceService, ILogger<ResourcesController> logger)
         {
             _resourceService = resourceService;
+            _logger = logger;
         }
 
         [HttpGet]
         public ActionResult Get()
         {
+            _logger.LogDebug(Newtonsoft.Json.JsonConvert.SerializeObject(User));
+
             var userId = User.Claims.FirstOrDefault(c => c.Type == "email").Value;
 
             if (string.IsNullOrEmpty(userId))
