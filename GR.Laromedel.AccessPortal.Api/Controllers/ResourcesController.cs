@@ -30,15 +30,15 @@ namespace GR.Laromedel.AccessPortal.Api.Controllers
             //_logger.LogDebug(Newtonsoft.Json.JsonConvert.SerializeObject(User));
 
             var claims = User.Claims.ToList();
-            _logger.LogDebug($"Antal claims {claims.Count()}");
+            _logger.LogInformation($"Antal claims {claims.Count()}");
             foreach (var claim in claims)
             {
-                _logger.LogDebug($"{claim.Type} {claim.Value}");
+                _logger.LogInformation($"{claim.Type} {claim.Value}");
             }
 
-            var userId = User.Claims.FirstOrDefault(c => c.Type == "email")?.Value;
+            var userId = User.Claims.FirstOrDefault(c => c.Type == "uuid")?.Value;
 
-            _logger.LogDebug($"-----");
+            _logger.LogInformation($"-----");
 
             if (string.IsNullOrEmpty(userId))
             {
