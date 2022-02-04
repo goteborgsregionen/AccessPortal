@@ -13,7 +13,7 @@ env:
     PACKAGE_PREFIX: 2021.1.1
     OCTOPUS_PROJECT_NAME: AccessPortal
     OCTOPUS_SPACE_NAME: Default
-    OCTOPUS_ENVIRONMENT_NAME: Läromedel PP Test
+    OCTOPUS_ENVIRONMENT_NAME: Läromedel Dev
     ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
 jobs:
@@ -53,4 +53,4 @@ jobs:
       env:
         OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER }}
         OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_APIKEY }} 
-      run: octo create-release --project="AccessPortal" --package="GR.Laromedel.AccessPortal.Api:$PACKAGE_VERSION" --releaseNumber="${env:PACKAGE_VERSION}" --server="${env:OCTOPUS_URL}" --apiKey="${env:OCTOPUS_API_KEY}" --space="${env:OCTOPUS_SPACE_NAME}" --deployTo="${env:OCTOPUS_ENVIRONMENT_NAME}"
+      run: octo create-release --project="AccessPortal" --package="GR.Laromedel.AccessPortal.Api:{env:PACKAGE_VERSION}" --releaseNumber="${env:PACKAGE_VERSION}" --server="${env:OCTOPUS_URL}" --apiKey="${env:OCTOPUS_API_KEY}" --space="${env:OCTOPUS_SPACE_NAME}" --deployTo="${env:OCTOPUS_ENVIRONMENT_NAME}"
