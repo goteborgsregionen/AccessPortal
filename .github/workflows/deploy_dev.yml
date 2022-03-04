@@ -3,8 +3,9 @@ name: Deploy to dev
 on: 
   push:
     branches:
-      - origin/refactored-deploy
+      - refactored-deploy
     paths:
+      - '.github/**'
       - 'GR.Laromedel.AccessPortal.Api/**'
       - 'GR.Laromedel.AccessPortal.Business/**'
       - 'GR.Laromedel.AccessPortal.Services/**'
