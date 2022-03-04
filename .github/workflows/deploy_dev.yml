@@ -43,7 +43,7 @@ jobs:
       shell: powershell
       
     - name: Build and Package Website
-      run: dotnet publish "$PSScriptRoot\GR.Laromedel.AccessPortal.Api\GR.Laromedel.AccessPortal.Api.csproj" --output "$PSScriptRoot\packagesoutput\GR.Laromedel.AccessPortal.Api" --configuration Release
+      run: dotnet publish ../GR.Laromedel.AccessPortal.Api/GR.Laromedel.AccessPortal.Api.csproj --output "$PSScriptRoot\packagesoutput\GR.Laromedel.AccessPortal.Api" --configuration Release
       shell: powershell
 
     - name: Read .nvmrc
