@@ -42,7 +42,7 @@ jobs:
       run: dotnet publish ./GR.Laromedel.AccessPortal.Api/GR.Laromedel.AccessPortal.Api.csproj --output "$PSScriptRoot\packagesoutput\GR.Laromedel.AccessPortal.Api" --configuration Release
       shell: powershell
 
-    - name: Read .nvmrc
+    - name: Read ./GR.Laromedel.AccessPortal.Web/.nvmrc
       run: echo ::set-output name=NVMRC::$(cat .nvmrc)
       id: nvm
 
@@ -62,14 +62,14 @@ jobs:
         CI: true
  
     - name: Copy web.config
-      run: sudo cp ./web.config ./dist/web.config
+      run: sudo cp ./GR.Laromedel.AccessPortal.Web/web.config ./GR.Laromedel.AccessPortal.Web/dist/web.config
 
     - name: Package and Push to Octopus
       env:
         OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER }}
         OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_APIKEY }}  
       run: |
-        octo pack --id="GR.Laromedel.AccessPortal.Web" --format="Zip" --version="${env:PACKAGE_VERSION}" --basePath="$PSScriptRoot\packagesoutput\dist" --outFolder="packages"
+        octo pack --id="GR.Laromedel.AccessPortal.Web" --format="Zip" --version="${env:PACKAGE_VERSION}" --basePath="$PSScriptRoot\packagesoutput\GR.Laromedel.AccessPortal.Web\dist" --outFolder="packages"
         octo pack --id="GR.Laromedel.AccessPortal.Api" --format="Zip" --version="${env:PACKAGE_VERSION}" --basePath="$PSScriptRoot\packagesoutput\GR.Laromedel.AccessPortal.Api" --outFolder="packages"
         octo push --package="packages\GR.Laromedel.AccessPortal.Api.${env:PACKAGE_VERSION}.zip" --server="${env:OCTOPUS_URL}" --apiKey="${env:OCTOPUS_API_KEY}"
         octo push --package="packages\GR.Laromedel.AccessPortal.Web.${env:PACKAGE_VERSION}.zip" --server="${env:OCTOPUS_URL}" --apiKey="${env:OCTOPUS_API_KEY}"
