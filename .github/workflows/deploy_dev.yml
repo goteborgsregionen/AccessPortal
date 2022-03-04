@@ -31,7 +31,7 @@ jobs:
       
     - name: Set version
       id: set-version
-      run: echo "::set-env name=PACKAGE_VERSION::${env:PACKAGE_PREFIX}.${env:GITHUB_RUN_NUMBER+20}-api"
+      run: echo "::set-env name=PACKAGE_VERSION::${env:PACKAGE_PREFIX}.${env:GITHUB_RUN_NUMBER}"
       shell: powershell
     
     - name: Make package directories
