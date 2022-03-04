@@ -43,7 +43,7 @@ jobs:
       shell: powershell
 
     - name: Read ./GR.Laromedel.AccessPortal.Web/.nvmrc
-      run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+      run: echo ::set-output name=NVMRC::$(cat ./GR.Laromedel.AccessPortal.Web/.nvmrc)
       id: nvm
 
     - name: Setup node
