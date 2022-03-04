@@ -51,9 +51,9 @@ jobs:
       with:
         node-version: '${{ steps.nvm.outputs.NVMRC }}'
 
-    - run: npm install
+    - run: npm ./GR.Laromedel.AccessPortal.Web/install
 
-    - run: npm run build
+    - run: npm run ./GR.Laromedel.AccessPortal.Web/build
       env:
         API_URL: https://apidev.accessportal.goteborgsregionen.se 
         IDP_AUTHORITY: https://idptest.goteborgsregionen.se
