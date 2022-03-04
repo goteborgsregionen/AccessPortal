@@ -3,7 +3,7 @@ name: Deploy Api
 on: 
   push:
     branches:
-      - update-dev-2
+      - reafactored-deploy
     paths:
       - 'GR.Laromedel.AccessPortal.Api/**'
       - 'GR.Laromedel.AccessPortal.Business/**'
