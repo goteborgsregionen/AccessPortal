@@ -73,10 +73,10 @@ jobs:
         OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER }}
         OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_APIKEY }}  
       run: |
-        octo pack --id="GR.Laromedel.AccessPortal.Web" --format="Zip" --version="${env:PACKAGE_VERSION}" --basePath="$PSScriptRoot\packagesoutput\dist" --outFolder="$PSScriptRoot\packages"
         octo pack --id="GR.Laromedel.AccessPortal.Api" --format="Zip" --version="${env:PACKAGE_VERSION}" --basePath="$PSScriptRoot\packagesoutput\GR.Laromedel.AccessPortal.Api" --outFolder="$PSScriptRoot\packages"
         octo push --package="$PSScriptRoot\packages\GR.Laromedel.AccessPortal.Api.${env:PACKAGE_VERSION}.zip" --server="${env:OCTOPUS_URL}" --apiKey="${env:OCTOPUS_API_KEY}"
-        octo push --package="$PSScriptRoot\packages\GR.Laromedel.AccessPortal.Web.${env:PACKAGE_VERSION}.zip" --server="${env:OCTOPUS_URL}" --apiKey="${env:OCTOPUS_API_KEY}"
+        octo pack --id="GR.Laromedel.AccessPortal.Web" --format="Zip" --version="{env:PACKAGE_VERSION}" --basePath="./dist" --outFolder="./packages"
+        octo push --package="./packages/GR.Laromedel.AccessPortal.Web.$PACKAGE_VERSION.zip" --server="${env:OCTOPUS_URL}" --apiKey="${env:OCTOPUS_API_KEY}"
 
     - name: Create and Deploy Release
       env:
