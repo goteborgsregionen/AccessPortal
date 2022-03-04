@@ -3,14 +3,15 @@ name: Deploy Api
 on: 
   push:
     branches:
-      - master
+      - update-dev-2
     paths:
       - 'GR.Laromedel.AccessPortal.Api/**'
       - 'GR.Laromedel.AccessPortal.Business/**'
       - 'GR.Laromedel.AccessPortal.Services/**'
+      - 'GR.Laromedel.AccessPortal.Web/**'
 
 env:
-    PACKAGE_PREFIX: 2021.1.1
+    PACKAGE_PREFIX: 2022.1.1
     OCTOPUS_PROJECT_NAME: AccessPortal
     OCTOPUS_SPACE_NAME: Default
     OCTOPUS_ENVIRONMENT_NAME: Läromedel Dev
@@ -40,14 +41,37 @@ jobs:
       run: dotnet publish ./GR.Laromedel.AccessPortal.Api/GR.Laromedel.AccessPortal.Api.csproj --output "$PSScriptRoot\packagesoutput\GR.Laromedel.AccessPortal.Api" --configuration Release
       shell: powershell
 
+      - name: Read .nvmrc
+      run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+      id: nvm
+
+    - name: Setup node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '${{ steps.nvm.outputs.NVMRC }}'
+
+    - run: npm install
+
+    - run: npm run build
+      env:
+        API_URL: https://apidev.accessportal.goteborgsregionen.se 
+        IDP_AUTHORITY: https://idptest.goteborgsregionen.se
+        CLIENT_ID: accessPortalClient
+        REDIRECT_URI: https://dev.accessportal.goteborgsregionen.se/atkomstportalen/signin-callback
+        CI: true
+ 
+    - name: Copy web.config
+      run: sudo cp ./web.config ./dist/web.config
+
     - name: Package and Push to Octopus
       env:
         OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER }}
         OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_APIKEY }}  
       run: |
+        octo pack --id="GR.Laromedel.AccessPortal.Web" --format="Zip" --version="${env:PACKAGE_VERSION}" --basePath="$PSScriptRoot\packagesoutput\dist" --outFolder="packages"
         octo pack --id="GR.Laromedel.AccessPortal.Api" --format="Zip" --version="${env:PACKAGE_VERSION}" --basePath="$PSScriptRoot\packagesoutput\GR.Laromedel.AccessPortal.Api" --outFolder="packages"
-
         octo push --package="packages\GR.Laromedel.AccessPortal.Api.${env:PACKAGE_VERSION}.zip" --server="${env:OCTOPUS_URL}" --apiKey="${env:OCTOPUS_API_KEY}"
+        octo push --package="packages\GR.Laromedel.AccessPortal.Web.${env:PACKAGE_VERSION}.zip" --server="${env:OCTOPUS_URL}" --apiKey="${env:OCTOPUS_API_KEY}"
 
     - name: Create and Deploy Release
       env:
