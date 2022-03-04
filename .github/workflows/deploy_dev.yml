@@ -62,7 +62,7 @@ jobs:
         CI: true
  
     - name: Copy web.config
-      run: sudo cp ./GR.Laromedel.AccessPortal.Web/web.config ./GR.Laromedel.AccessPortal.Web/dist/web.config
+      run: cp ./GR.Laromedel.AccessPortal.Web/web.config ./GR.Laromedel.AccessPortal.Web/dist/web.config
 
     - name: Package and Push to Octopus
       env:
