@@ -1,4 +1,4 @@
-name: Deploy Api
+name: Deploy to dev
 
 on: 
   push:
@@ -41,7 +41,7 @@ jobs:
       run: dotnet publish ./GR.Laromedel.AccessPortal.Api/GR.Laromedel.AccessPortal.Api.csproj --output "$PSScriptRoot\packagesoutput\GR.Laromedel.AccessPortal.Api" --configuration Release
       shell: powershell
 
-      - name: Read .nvmrc
+    - name: Read .nvmrc
       run: echo ::set-output name=NVMRC::$(cat .nvmrc)
       id: nvm
 
