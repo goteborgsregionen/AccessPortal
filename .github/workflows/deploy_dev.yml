@@ -53,7 +53,7 @@ jobs:
 
     - run: npm install ./GR.Laromedel.AccessPortal.Web
 
-    - run: npm run build ./GR.Laromedel.AccessPortal.Web
+    - run: npm run build --prefix ./GR.Laromedel.AccessPortal.Web
       env:
         API_URL: https://apidev.accessportal.goteborgsregionen.se 
         IDP_AUTHORITY: https://idptest.goteborgsregionen.se
