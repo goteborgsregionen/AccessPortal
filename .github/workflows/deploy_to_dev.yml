@@ -58,7 +58,7 @@ jobs:
  
     - name: Set version
       id: set-version
-      run: echo "::set-env name=PACKAGE_VERSION::${{ jobs.set_package_version.outputs.package_version }}.$GITHUB_RUN_NUMBER-web"
+      run: echo "::set-env name=PACKAGE_VERSION::${{ needs.set_package_version.outputs.package_version }}.$GITHUB_RUN_NUMBER-web"
 
     - name: Copy web.config
       run: sudo cp ./web.config ./dist/web.config
