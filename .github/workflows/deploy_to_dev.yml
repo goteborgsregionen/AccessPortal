@@ -10,7 +10,7 @@ on:
       - '.github/workflows/**'
 
 env:
-    PACKAGE_PREFIX: ${{ date +'%Y.%m.%d' }}
+    PACKAGE_PREFIX: ${{( date +'%Y.%m.%d' )}}
     OCTOPUS_PROJECT_NAME: AccessPortal
     OCTOPUS_SPACE_NAME: Default
     OCTOPUS_ENVIRONMENT_NAME: Läromedel Dev
