@@ -68,7 +68,6 @@ jobs:
 
   build_api:
     runs-on: windows-latest
-    needs: build_web
     name: Build api
     steps:
     - uses: actions/checkout@v2
