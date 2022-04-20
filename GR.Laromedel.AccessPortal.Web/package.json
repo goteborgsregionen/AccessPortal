@@ -1,6 +1,6 @@
 {
   "name": "gr.laromedel.access-portal.web",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "GR.Laromedel.AccessPortal.Web",
   "scripts": {
     "build": "parcel build src/index.html",
