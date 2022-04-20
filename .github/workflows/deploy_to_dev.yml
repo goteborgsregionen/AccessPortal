@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set current date as env variable
-        run: echo "PACKAGE_PREFIX::$(date +'%Y.%m.%d')" >> $GITHUB_ENV
+        run: echo "::set-env name=PACKAGE_PREFIX::$(date +'%Y.%m.%d')" >> $GITHUB_ENV
   build_web:
     name: Build web
     runs-on: ubuntu-latest
