@@ -17,7 +17,7 @@ env:
     ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
 jobs:
-  build1:
+  build_web:
     name: Build web
     runs-on: ubuntu-latest
     defaults:
@@ -66,8 +66,9 @@ jobs:
 
         octo push --package="./packages/GR.Laromedel.AccessPortal.Web.$PACKAGE_VERSION.zip" --server="${{ secrets.OCTOPUS_SERVER }}" --apiKey="${{ secrets.OCTOPUS_APIKEY }}"
 
-  build2:
+  build_api:
     runs-on: windows-latest
+    needs: build_web
     name: Build api
     steps:
     - uses: actions/checkout@v2
@@ -100,6 +101,7 @@ jobs:
   
   build3:
     runs-on: windows-latest
+    needs: [build_web, build_api]
     name: Deploy
     steps:
 
