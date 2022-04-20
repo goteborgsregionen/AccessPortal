@@ -97,7 +97,7 @@ jobs:
 
     - name: Set version
       id: set-version
-      run: echo "::set-env name=PACKAGE_VERSION::${jobs.set_package_version.outputs.package_version}.${env:GITHUB_RUN_NUMBER}-dev"
+      run: echo "::set-env name=PACKAGE_VERSION::${needs.jobs.set_package_version.outputs.package_version}.${env:GITHUB_RUN_NUMBER}-dev"
 
       shell: powershell
     - name: Package and Push to Octopus
@@ -111,14 +111,14 @@ jobs:
   
   deploy:
     runs-on: windows-latest
-    needs: [build_web, build_api]
+    needs: [set_package_version, build_web, build_api]
     name: Deploy
     steps:
     - uses: actions/checkout@v2
 
     - name: Set version
       id: set-version
-      run: echo "::set-env name=PACKAGE_VERSION::${jobs.set_package_version.outputs.package_version}.${env:GITHUB_RUN_NUMBER}-dev"
+      run: echo "::set-env name=PACKAGE_VERSION::${needs.jobs.set_package_version.outputs.package_version}.${env:GITHUB_RUN_NUMBER}-dev"
 
     - name: Create and Deploy Release
       env:
