@@ -17,9 +17,15 @@ env:
     ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
 jobs:
+  set_package_prefix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set current date as env variable
+        run: echo "PACKAGE_PREFIX::$(date +'%Y.%m.%d')" >> $GITHUB_ENV
   build_web:
     name: Build web
     runs-on: ubuntu-latest
+    needs: set_package_prefix
     defaults:
       run:
         working-directory: GR.Laromedel.AccessPortal.Web
@@ -69,6 +75,7 @@ jobs:
   build_api:
     runs-on: windows-latest
     name: Build api
+    needs: set_package_prefix
     steps:
     - uses: actions/checkout@v2
       
