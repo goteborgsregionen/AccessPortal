@@ -120,6 +120,7 @@ jobs:
       id: set-version
       run: echo "::set-env name=PACKAGE_VERSION::${{ needs.set_package_version.outputs.package_version }}.${env:GITHUB_RUN_NUMBER}-dev"
 
+      shell: powershell
     - name: Create and Deploy Release
       env:
         OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER }}
