@@ -3,7 +3,7 @@ name: Test Api
 on: 
   push:
     branches:
-      - master
+      - 'tests/**'
     paths:
       - 'GR.Laromedel.AccessPortal.Api/**'
       - 'GR.Laromedel.AccessPortal.Business/**'

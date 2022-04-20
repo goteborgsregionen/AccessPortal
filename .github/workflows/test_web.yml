@@ -3,7 +3,7 @@ name: Test Web
 on: 
   push:
     branches:
-      - master
+      - 'tests/**'
     paths:
       - 'GR.Laromedel.AccessPortal.Web/**'
 
