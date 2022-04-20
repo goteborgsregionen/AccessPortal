@@ -10,7 +10,7 @@ on:
       - '.github/workflows/**'
 
 env:
-    PACKAGE_VERSION: ${{ $(date +'%Y') }}.${{ github.run_number }}.${{ github.run_attempt }}
+    PACKAGE_VERSION: ${{ date +'%Y' }}.${{ github.run_number }}.${{ github.run_attempt }}
     OCTOPUS_PROJECT_NAME: AccessPortal
     OCTOPUS_SPACE_NAME: Default
     OCTOPUS_ENVIRONMENT_NAME: Läromedel Dev
