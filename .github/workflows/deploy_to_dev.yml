@@ -119,9 +119,14 @@ jobs:
     - name: Set version
       id: set-version
       run: echo "::set-env name=PACKAGE_VERSION::${{ needs.set_package_version.outputs.package_version }}.${env:GITHUB_RUN_NUMBER}-dev"
-
       shell: powershell
+
+    - name: Install Octopus CLI
+      run: choco install octopustools -y
+      shell: powershell
+
     - name: Create and Deploy Release
+      shell: powershell
       env:
         OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER }}
         OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_APIKEY }} 
