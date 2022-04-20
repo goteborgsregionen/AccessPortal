@@ -10,22 +10,26 @@ on:
       - '.github/workflows/**'
 
 env:
-    PACKAGE_VERSION: ${{ date +'%Y' }}.${{ github.run_number }}.${{ github.run_attempt }}
+    PACKAGE_VERSION: ''
     OCTOPUS_PROJECT_NAME: AccessPortal
     OCTOPUS_SPACE_NAME: Default
     OCTOPUS_ENVIRONMENT_NAME: Läromedel Dev
     ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
 jobs:
-  #set_package_prefix:
-  #  runs-on: ubuntu-latest
-  #  steps:
-  #    - name: Set current date as env variable
-  #      run: echo ::set-env name=PACKAGE_PREFIX::${{ date +'%Y.%m.%d' }} >> $GITHUB_ENV
+  set_package_version:
+    runs-on: ubuntu-latest
+    outputs:
+      package_version: ${{ steps.package_version.outputs.package_version }}
+    steps:
+      - name: Set current date as env variable
+        id: package_version
+        run: echo "::set-output name=package_version::$(date +'%Y.%m.%d')"
+
   build_web:
     name: Build web
     runs-on: ubuntu-latest
-    #needs: set_package_prefix
+    needs: set_package_prefix
     defaults:
       run:
         working-directory: GR.Laromedel.AccessPortal.Web
@@ -52,6 +56,10 @@ jobs:
         REDIRECT_URI: https://dev.accessportal.goteborgsregionen.se/atkomstportalen/signin-callback
         CI: true
  
+    - name: Set version
+      id: set-version
+      run: echo "::set-env name=PACKAGE_VERSION::$jobs.set_package_version.outputs.package_version.$GITHUB_RUN_NUMBER-web"
+
     - name: Copy web.config
       run: sudo cp ./web.config ./dist/web.config
 
@@ -71,7 +79,7 @@ jobs:
   build_api:
     runs-on: windows-latest
     name: Build api
-    #needs: set_package_prefix
+    needs: set_package_prefix
     steps:
     - uses: actions/checkout@v2
     
@@ -87,6 +95,11 @@ jobs:
       run: dotnet publish ./GR.Laromedel.AccessPortal.Api/GR.Laromedel.AccessPortal.Api.csproj --output "$PSScriptRoot\packagesoutput\GR.Laromedel.AccessPortal.Api" --configuration Release
       shell: powershell
 
+    - name: Set version
+      id: set-version
+      run: echo "::set-env name=PACKAGE_VERSION::${jobs.set_package_version.outputs.package_version}.${env:GITHUB_RUN_NUMBER}-dev"
+
+      shell: powershell
     - name: Package and Push to Octopus
       env:
         OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER }}
@@ -96,12 +109,16 @@ jobs:
 
         octo push --package="packages\GR.Laromedel.AccessPortal.Api.${env:PACKAGE_VERSION}.zip" --server="${env:OCTOPUS_URL}" --apiKey="${env:OCTOPUS_API_KEY}"
   
-  build3:
+  deploy:
     runs-on: windows-latest
     needs: [build_web, build_api]
     name: Deploy
     steps:
     - uses: actions/checkout@v2
+
+    - name: Set version
+      id: set-version
+      run: echo "::set-env name=PACKAGE_VERSION::${jobs.set_package_version.outputs.package_version}.${env:GITHUB_RUN_NUMBER}-dev"
 
     - name: Create and Deploy Release
       env:
