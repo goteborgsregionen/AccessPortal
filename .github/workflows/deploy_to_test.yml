@@ -1,0 +1,135 @@
+name: Deploy to Test
+
+on: 
+  push:
+    branches:
+      - 'tests/**'
+    paths:
+      - 'GR.Laromedel.AccessPortal.Api/**'
+      - 'GR.Laromedel.AccessPortal.Business/**'
+      - 'GR.Laromedel.AccessPortal.Services/**'
+      - 'GR.Laromedel.AccessPortal.Web/**'
+      - '.github/workflows/**'
+
+env:
+    PACKAGE_VERSION: ''
+    OCTOPUS_PROJECT_NAME: AccessPortal
+    OCTOPUS_SPACE_NAME: Default
+    OCTOPUS_ENVIRONMENT_NAME: Läromedel PP Test
+    ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
+jobs:
+  set_package_version:
+    runs-on: ubuntu-latest
+    outputs:
+      package_version: ${{ steps.package_version.outputs.package_version }}
+    steps:
+      - name: Set current date as env variable
+        id: package_version
+        run: echo "::set-output name=package_version::$(date +'%Y.%m.%d')"
+
+  build_web:
+    name: Build web
+    runs-on: ubuntu-latest
+    needs: set_package_version
+    defaults:
+      run:
+        working-directory: GR.Laromedel.AccessPortal.Web
+
+    steps:
+    - uses: actions/checkout@v2
+  
+    - name: Read .nvmrc
+      run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+      id: nvm
+
+    - name: Setup node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '${{ steps.nvm.outputs.NVMRC }}'
+
+    - run: npm install
+
+    - run: npm run build
+      env:
+        API_URL: https://apitest.accessportal.goteborgsregionen.se 
+        IDP_AUTHORITY: https://idptest.goteborgsregionen.se
+        CLIENT_ID: accessPortalClient
+        REDIRECT_URI: https://test.accessportal.goteborgsregionen.se/atkomstportalen/signin-callback
+        CI: true
+ 
+    - name: Set version
+      id: set-version
+      run: echo "::set-env name=PACKAGE_VERSION::${{ needs.set_package_version.outputs.package_version }}.$GITHUB_RUN_NUMBER-test"
+
+    - name: Copy web.config
+      run: sudo cp ./web.config ./dist/web.config
+
+    - name: Install Octopus CLI
+      run: |
+        sudo apt update && sudo apt install --no-install-recommends gnupg curl ca-certificates apt-transport-https && \
+        curl -sSfL https://apt.octopus.com/public.key | sudo apt-key add - && \
+        sudo sh -c "echo deb https://apt.octopus.com/ stable main > /etc/apt/sources.list.d/octopus.com.list" && \
+        sudo apt update && sudo apt install octopuscli 
+    
+    - name: Package and Push to Octopus
+      run: |
+        octo pack --id="GR.Laromedel.AccessPortal.Web" --format="Zip" --version="$PACKAGE_VERSION" --basePath="./dist" --outFolder="./packages"
+
+        octo push --package="./packages/GR.Laromedel.AccessPortal.Web.$PACKAGE_VERSION.zip" --server="${{ secrets.OCTOPUS_SERVER }}" --apiKey="${{ secrets.OCTOPUS_APIKEY }}"
+
+  build_api:
+    runs-on: windows-latest
+    name: Build api
+    needs: set_package_version
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Make package directories
+      run: New-Item "$PSScriptRoot\packagesoutput\" -ItemType Directory -Force
+      shell: powershell
+    
+    - name: Install Octopus CLI
+      run: choco install octopustools -y
+      shell: powershell
+      
+    - name: Build and Package Website
+      run: dotnet publish ./GR.Laromedel.AccessPortal.Api/GR.Laromedel.AccessPortal.Api.csproj --output "$PSScriptRoot\packagesoutput\GR.Laromedel.AccessPortal.Api" --configuration Release
+      shell: powershell
+
+    - name: Set version
+      id: set-version
+      run: echo "::set-env name=PACKAGE_VERSION::${{ needs.set_package_version.outputs.package_version }}.${env:GITHUB_RUN_NUMBER}-test"
+
+      shell: powershell
+    - name: Package and Push to Octopus
+      env:
+        OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER }}
+        OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_APIKEY }}  
+      run: |
+        octo pack --id="GR.Laromedel.AccessPortal.Api" --format="Zip" --version="${env:PACKAGE_VERSION}" --basePath="$PSScriptRoot\packagesoutput\GR.Laromedel.AccessPortal.Api" --outFolder="packages"
+
+        octo push --package="packages\GR.Laromedel.AccessPortal.Api.${env:PACKAGE_VERSION}.zip" --server="${env:OCTOPUS_URL}" --apiKey="${env:OCTOPUS_API_KEY}"
+  
+  deploy:
+    runs-on: windows-latest
+    needs: [set_package_version, build_web, build_api]
+    name: Deploy
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set version
+      id: set-version
+      run: echo "::set-env name=PACKAGE_VERSION::${{ needs.set_package_version.outputs.package_version }}.${env:GITHUB_RUN_NUMBER}-test"
+      shell: powershell
+
+    - name: Install Octopus CLI
+      run: choco install octopustools -y
+      shell: powershell
+
+    - name: Create and Deploy Release
+      shell: powershell
+      env:
+        OCTOPUS_URL: ${{ secrets.OCTOPUS_SERVER }}
+        OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_APIKEY }} 
+      run: octo create-release --project="AccessPortal" --defaultPackageVersion="${env:PACKAGE_VERSION}" --releaseNumber="${env:PACKAGE_VERSION}" --server="${env:OCTOPUS_URL}" --apiKey="${env:OCTOPUS_API_KEY}" --space="${env:OCTOPUS_SPACE_NAME}" --deployTo="${env:OCTOPUS_ENVIRONMENT_NAME}"
