@@ -1,9 +1,9 @@
-name: Deploy to Test
+name: Deploy to Prod
 
 on: 
   push:
     branches:
-      - 'tests/**'
+      - 'releases/**'
     paths:
       - 'GR.Laromedel.AccessPortal.Api/**'
       - 'GR.Laromedel.AccessPortal.Business/**'
@@ -15,7 +15,7 @@ env:
     PACKAGE_VERSION: ''
     OCTOPUS_PROJECT_NAME: AccessPortal
     OCTOPUS_SPACE_NAME: Default
-    OCTOPUS_ENVIRONMENT_NAME: Läromedel PP Test
+    OCTOPUS_ENVIRONMENT_NAME: Läromedel Prod
     ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
 jobs:
@@ -52,15 +52,15 @@ jobs:
 
     - run: npm run build
       env:
-        API_URL: https://apitest.accessportal.goteborgsregionen.se 
-        IDP_AUTHORITY: https://idptest.goteborgsregionen.se
+        API_URL: https://api.atkomstportalen.laromedel.goteborgsregionen.se 
+        IDP_AUTHORITY: https://idp.goteborgsregionen.se
         CLIENT_ID: accessPortalClient
-        REDIRECT_URI: https://test.accessportal.goteborgsregionen.se/atkomstportalen/signin-callback
+        REDIRECT_URI: https://atkomstportalen.laromedel.goteborgsregionen.se/atkomstportalen/signin-callback
         CI: true
  
     - name: Set version
       id: set-version
-      run: echo "::set-env name=PACKAGE_VERSION::${{ needs.set_package_version.outputs.package_version }}.$GITHUB_RUN_NUMBER-test"
+      run: echo "::set-env name=PACKAGE_VERSION::${{ needs.set_package_version.outputs.package_version }}.$GITHUB_RUN_NUMBER-prod"
 
     - name: Copy web.config
       run: sudo cp ./web.config ./dist/web.config
@@ -99,7 +99,7 @@ jobs:
 
     - name: Set version
       id: set-version
-      run: echo "::set-env name=PACKAGE_VERSION::${{ needs.set_package_version.outputs.package_version }}.${env:GITHUB_RUN_NUMBER}-test"
+      run: echo "::set-env name=PACKAGE_VERSION::${{ needs.set_package_version.outputs.package_version }}.${env:GITHUB_RUN_NUMBER}-prod"
 
       shell: powershell
     - name: Package and Push to Octopus
@@ -120,7 +120,7 @@ jobs:
 
     - name: Set version
       id: set-version
-      run: echo "::set-env name=PACKAGE_VERSION::${{ needs.set_package_version.outputs.package_version }}.${env:GITHUB_RUN_NUMBER}-test"
+      run: echo "::set-env name=PACKAGE_VERSION::${{ needs.set_package_version.outputs.package_version }}.${env:GITHUB_RUN_NUMBER}-prod"
       shell: powershell
 
     - name: Install Octopus CLI
