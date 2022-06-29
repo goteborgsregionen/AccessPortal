@@ -26,7 +26,7 @@ export default () => {
 
   return (
     <>
-      <h1 className="text-primary text-2xl">Dina Läraresurser</h1>
+      <h1 className="text-primary text-2xl">Dina Lärresurser</h1>
       {groupedResources.map(({ subject, resources }) => (
         <div key={subject} className="mb-8">
           <h2 className="text-xl my-4 text-primary">{subject ? subject : 'Övriga ämnen'}</h2>
