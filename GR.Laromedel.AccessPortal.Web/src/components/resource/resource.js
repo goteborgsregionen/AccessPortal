@@ -1,6 +1,15 @@
 import React from 'react';
 
 export default function Resource({ data, isSelected, onClick }) {
+
+  const imgUrl = (src) => {
+    if (src.indexOf("goteborgsregionen.se/") >= 0 || src.startsWith("data:image") || src.startsWith("/")) {
+      return src;
+    }
+
+    return "https://api.laromedel.goteborgsregionen.se/media/getExternalImage?src=" + encodeURIComponent(src);
+  }
+
   return (
     <div className="w-1/4 mr-4 flex-none">
       <div
@@ -12,7 +21,7 @@ export default function Resource({ data, isSelected, onClick }) {
         }
         role="button"
         style={{
-          backgroundImage: `url(${data.coverImageFull})`,
+          backgroundImage: `url(${imgUrl(data.coverImageFull)})`,
           paddingBottom: '100%',
           backgroundSize: '110%',
           backgroundPosition: 'center',
