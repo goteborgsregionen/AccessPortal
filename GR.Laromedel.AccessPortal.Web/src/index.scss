@@ -132,13 +132,7 @@
   }
 }
 
-.login-box {
-  width: 50%;
-  margin: 0 auto; /* Center the box horizontally */
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Center the content horizontally */
-
+.common-styles {
   h1 {
     font-size: 1.875rem; /* 30px */
     font-weight: bold;
@@ -153,7 +147,15 @@
   a {
     text-decoration: underline;
   }
+}
 
+.login-box {
+  width: 50%;
+  margin: 0 auto; /* Center the box horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the content horizontally */
+  @extend .common-styles;
   button {
     margin-top: 1em;
     width: 100%;
@@ -163,4 +165,9 @@
     color: white;
     background-color: #165F59;
   }
+}
+
+.common-box {
+  @extend .common-styles;
+  // Add any specific styles for common-box if needed
 }
