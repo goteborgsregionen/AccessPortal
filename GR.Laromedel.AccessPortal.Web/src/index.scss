@@ -1,0 +1,166 @@
+:root {
+  @extend .base;
+}
+
+.base {
+  --color-bg-primary: #f6f8f8;
+  --color-bg-secondary: #ffffff;
+  --color-text-primary: #263635;
+  --color-welcome-msg: #a9cee0;
+  --color-button-close: #1a7167;
+  --color-button-hover: #114b47;
+  --color-text-accent: #2b6cb0;
+}
+
+.student {
+  --color-bg-primary: #0e1211;
+  --color-bg-secondary: #1f2524;
+  --color-text-primary: #fff;
+  --color-text-secondary: #0e1211;
+  --color-welcome-msg: #f4a38c;
+  --color-text-accent: #81e6d9;
+  --color-button-close: #fff;
+  --color-button-hover: #95d0c8;
+}
+
+@font-face {
+  font-family: 'Conduit';
+  src: url('./assets/fonts/a5a0edc0-b571-4275-9c51-3dfeba35b75a.eot');
+  src: url('./assets/fonts/a5a0edc0-b571-4275-9c51-3dfeba35b75a.eot') format('eot'),
+    url('./assets/fonts/a81af59b-a5d9-4e96-a7cc-919403c0d86c.woff2') format('woff2'),
+    url('./assets/fonts/e93ee223-5d52-4bdf-a113-c6c4c8936824.woff') format('woff'),
+    url('./assets/fonts/ccdadc2e-26c9-48a5-9c52-9c3cc58e9930.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Conduit';
+  src: url('./assets/fonts/45fa0132-0858-4e18-9594-5a070788a059.eot');
+  src: url('./assets/fonts/45fa0132-0858-4e18-9594-5a070788a059.eot') format('eot'),
+    url('./assets/fonts/0f250d3b-13fd-469c-a4ec-9f9984165dea.woff2') format('woff2'),
+    url('./assets/fonts/e924c59f-bc21-471f-ad1b-cefd0c1a6315.woff') format('woff'),
+    url('./assets/fonts/13b88c12-e5f0-46c4-932a-57fe881b7c46.ttf') format('truetype');
+  font-weight: 200;
+}
+
+.box {
+  background-color: var(--color-bg-secondary);
+  margin-bottom: 20px;  
+}
+
+.header {
+  margin-top: 1.5rem; 
+  margin-bottom: 2.5rem;
+  
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem; 
+    margin-bottom: 1rem; 
+
+    &.centered {      
+      width: 50%;
+      margin: 0 auto; /* Center the box horizontally */
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center the content horizontally */
+
+      a {
+        align-self: start; 
+      }
+    }
+  }
+
+  .logo {
+    height: auto;
+    width: 10rem; 
+    fill: #e57373;
+  }
+
+  .welcome-message {
+    border-radius: 1rem; /* rounded-2xl */
+    margin-top: -2.5rem; /* -mt-10 */
+    margin-left: 12rem; /* ml-48 */
+    border-top-left-radius: 0; /* rounded-tl-none */
+    font-size: 1.125rem; /* text-lg */
+    width: 24rem; /* w-96 */
+    padding: 1rem; /* p-4 */
+    background-color: var(--color-welcome-msg);
+  }
+
+  .search-input {
+    position: relative;
+    input {
+      border: 1px solid #e0e0e0; /* border-gray-400 */
+      background-color: white;
+      border-radius: 9999px; /* rounded-full */
+      padding-left: 0.75rem; /* pl-3 */
+      padding-right: 2rem; /* pr-8 */
+      height: 2rem; /* h-8 */
+      width: 14rem; /* w-56 */
+      outline: none; /* focus:outline-none */
+      box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* focus:shadow-outline */
+    }
+    .search-icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+      margin-top: 0.5rem; /* mt-2 */
+      margin-right: 0.75rem; /* mr-3 */
+      height: 1rem; /* h-4 */
+      width: 1rem; /* w-4 */
+    }
+  }
+}
+
+.footer {
+  background-color: #f2da91;
+  height: 10rem; 
+  padding-top: 1.5rem; 
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-links {
+  font-size: 1.125rem; /* text-lg */
+  color: black;
+
+  li {
+    margin-bottom: 0.5rem; /* mb-2 */
+  }
+}
+
+.login-box {
+  width: 50%;
+  margin: 0 auto; /* Center the box horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the content horizontally */
+
+  h1 {
+    font-size: 1.875rem; /* 30px */
+    font-weight: bold;
+    margin-bottom: 1rem; /* 16px */
+    align-self: flex-start; /* Align to the left */
+  }
+
+  p {
+    font-size: 1.125rem; /* 18px */
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  button {
+    margin-top: 1em;
+    width: 100%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-size: 2rem; 
+    color: white;
+    background-color: #165F59;
+  }
+}
