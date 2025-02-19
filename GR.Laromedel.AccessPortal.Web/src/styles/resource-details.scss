@@ -1,0 +1,152 @@
+.resource-details {
+  background-color: var(--color-bg-primary);
+  border-radius: 0.5rem; /* rounded */
+  padding: 0.25rem 1.5rem 1.5rem 1.5rem; /* p-6 */
+ // margin-bottom: 3rem; /* mb-12 */
+//   width: 91.666667%; /* w-11/12 */
+  color: var(--color-text-primary);
+
+  .header {
+    display: flex; /* flex */
+    justify-content: space-between; /* justify-between */
+    align-items: flex-start; /* items-start */
+    width: 100%; /* w-full */
+
+    h4 {
+      font-size: 1.5rem; /* text-2xl */
+    }
+
+    button {
+      font-size: 1.25rem; /* text-xl */
+      display: flex; /* flex */
+      align-items: center; /* items-center */
+      text-transform: uppercase; /* uppercase */
+      color: var(--color-button-close); /* text-close-primary */
+      &:hover {
+        color: var(--color-button-hover); /* text-close-hover */
+      }
+      &:focus {
+        outline: none; /* focus:outline-none */
+      }
+
+      span {
+        margin-top: 0.125rem; /* mt-px */
+        margin-left: 0.5rem; /* ml-2 */
+      }
+    }
+  }
+
+  .resource-information {
+    display: flex; /* flex */
+    margin-top: 1.5rem; /* mt-6 */
+    gap: 2rem; /* gap-8 */
+
+    .left-section {
+      width: 33.333333%; /* w-1/3 */
+
+      .subjects-and-grade {
+        display: flex; /* flex */
+        align-items: center; /* items-center */
+        margin-bottom: 0.75rem; /* mb-3 */
+
+        p {
+          font-size: 1.125rem; /* text-lg */
+          border-right: 1px solid #e0e0e0; /* border-gray-400 */
+          margin-right: 0.5rem; /* mr-2 */
+          padding-right: 0.5rem; /* pr-2 */
+        }
+      }
+
+      .contributors-and-language {
+        margin-bottom: 0.75rem; /* mb-3 */
+
+        p {
+          margin-bottom: 0.25rem; /* mb-1 */
+          span {
+            font-weight: 300; /* font-thin */
+          }
+        }
+      }
+
+      .publish-information {
+        border: 1px solid #e0e0e0; /* border-gray-300 */
+        padding: 0.5rem; /* p-2 */
+
+        p {
+          margin-bottom: 0.25rem; /* mb-1 */
+          span {
+            font-weight: 300; /* font-thin */
+          }
+        }
+      }
+    }
+
+    .right-section {
+      width: 66.666667%; /* w-2/3 */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; 
+
+      .description {
+        font-family: serif; /* font-serif */
+        line-height: 1.5; /* leading-normal */
+        overflow-y: scroll; /* overflow-y-scroll */
+        height: 6rem; /* h-24 */
+        padding-right: 1.5rem; /* pr-6 */
+        margin-bottom: 3rem; /* mb-12 */
+        width: 100%; /* w-full */
+
+        p {
+          margin-bottom: 0.5rem; /* mb-2 */
+        }
+      }
+
+      .controls {
+        display: flex; /* flex */
+        justify-content: flex-end; /* justify-end */
+        gap: 0.25rem; /* gap-2 */
+        flex-direction: row; /* Stack buttons vertically */
+        align-self: flex-end;
+        @media (max-width: 1279px) {
+          flex-direction: row; /* Stack elements horizontally on smaller screens */
+        }
+
+        button {
+          align-items: center; /* items-center */
+          justify-content: center; /* Center contents */
+          font-size: 1.15rem; /* text-xl */
+          padding: 0.5rem 1rem; 
+          border-radius: 0.5rem; /* rounded */
+          margin-left: 0.5rem;
+          margin-bottom: 0.5rem;
+          white-space: nowrap; /* Ensure text is always on one row */
+          &:focus {
+            outline: none; /* focus:outline-none */
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* focus:shadow-outline */
+          }
+        }
+
+        .copy-button {
+          background-color: #e0e0e0; /* bg-gray-200 */
+          color: #38a169; /* text-green-600 */
+          &:hover {
+            background-color: #d1d1d1; /* hover:bg-gray-300 */
+          }
+        }
+
+        .open-resource-button {
+          background-color: #38a169; /* bg-green-600 */
+          color: white;
+          &:hover {
+            background-color: #2f855a; /* hover:bg-green-700 */
+          }
+        }
+
+        svg {
+            display: inline-block;
+            padding-right: 0.25rem;
+          }
+      }
+    }
+  }
+}
