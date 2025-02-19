@@ -62,17 +62,16 @@ export default function ResourceDetails({ resource, onClose }) {
 
           <div className="controls">
             <button
-              className="copy-button"
+              className="secondary-button"
               onClick={() => copyLink(resource.resourceUri)}
             >
               <CopyIcon /> 
               Kopiera länk
             </button>
-            <button className="open-resource-button">
+            <button className="primary-button">
               <a
                 href={`${apiUrl}/redirection/?url=${resource.resourceUri}`}
-                target="_blank"
-                
+                target="_blank"                
               >
                 <ExternalLinkIcon />
                 Öppna lärresurs

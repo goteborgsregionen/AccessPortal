@@ -157,3 +157,31 @@
     flex-direction: column; /* Stack elements vertically on smaller screens */
   }
 }
+
+.primary-button {
+  background-color: #006459; 
+  color: white;
+  &:hover {
+    background-color: rgba(33, 33, 33, 0.8); 
+  }
+
+  svg {
+    display: inline-block;
+    padding-right: 0.25rem;
+  }
+}
+
+.secondary-button {
+  background-color: white;
+  color: #006459; 
+  border: 1px solid #006459;
+  &:hover {
+    border-color: #29A599;
+    color: rgba(33, 33, 33, 0.8); 
+  }
+
+  svg {
+    display: inline-block;
+    padding-right: 0.25rem;
+  }
+}

@@ -31,6 +31,7 @@ export default function ResourceList({ resources }) {
             <ResourceTile
               key={resource.title}
               resource={resource}
+              isDetailsShown={!!selectedResource}
               onClick={() => setSelectedResource(resource)}
             />
           ))}

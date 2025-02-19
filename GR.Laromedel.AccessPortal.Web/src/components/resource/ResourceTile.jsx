@@ -2,7 +2,7 @@ import React from 'react';
 import ExternalLinkIcon from '../../assets/icons/external-link';
 import apiUrl from '../../utilities/apiUrl';
 
-const ResourceTile = ({ resource, onClick }) => {
+const ResourceTile = ({ resource, onClick, isDetailsShown }) => {
   const imgUrl = (src) => {
     if (
       src?.indexOf('goteborgsregionen.se/') >= 0 ||
@@ -19,36 +19,42 @@ const ResourceTile = ({ resource, onClick }) => {
     );
   };
 
+  const handleMoreButtonClick = (e) => {
+    e.preventDefault();
+    onClick();
+  };
+
   return (
-    <div className="resource-tile">
-      <div className="image-and-info">
-        <a href={`${apiUrl}/redirection/?url=${resource.resourceUri}`} target="_blank">
+    <a
+      href={isDetailsShown ? '' : `${apiUrl}/redirection/?url=${resource.resourceUri}`}
+      target="_blank"
+    >
+      <div className="resource-tile">
+        <div className="image-and-info">
           <img
             src={imgUrl(resource.coverImageFull)}
-            alt={resource.title}
+            alt={`Öppna ${resource.title}`}
             className="image"
-            role="button"
           />
-        </a>
-        <div className="info">
-          <h3>{resource.title}</h3>
-          <p>
-            <span>Förlag:</span> {resource.supplierName}
-          </p>
+
+          <div className="info">
+            <h3>{resource.title}</h3>
+            <p>
+              <span>Förlag:</span> {resource.supplierName}
+            </p>
+          </div>
         </div>
-      </div>
-      <div className="buttons">
-        <button className="open-resource-button">
-          <a href={`${apiUrl}/redirection/?url=${resource.resourceUri}`} target="_blank">
+        <div className="buttons">
+          <button className="primary-button">
             <ExternalLinkIcon />
             Öppna resurs
-          </a>
-        </button>
-        <button className="more-button" onClick={onClick}>
-          Mer information
-        </button>
+          </button>
+          <button className="secondary-button" onClick={handleMoreButtonClick}>
+            Mer information
+          </button>
+        </div>
       </div>
-    </div>
+    </a>
   );
 };
 

@@ -68,28 +68,7 @@
         outline: none; /* focus:outline-none */
         box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* focus:shadow-outline */
       }
-    }
-
-    .more-button {
-      background-color: #e0e0e0; /* bg-gray-200 */
-      color: #38a169; /* text-green-600 */
-      &:hover {
-        background-color: #d1d1d1; /* hover:bg-gray-300 */
-      }
-    }
-
-    .open-resource-button {
-      background-color: #38a169; /* bg-green-600 */
-      color: white;
-      &:hover {
-        background-color: #2f855a; /* hover:bg-green-700 */
-      }
-
-      svg {
-        display: inline-block;
-        padding-right: 0.25rem;
-      }
-    }
+    }    
   }
 
 
