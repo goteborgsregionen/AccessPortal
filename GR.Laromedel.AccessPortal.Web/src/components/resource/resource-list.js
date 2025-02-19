@@ -1,28 +1,46 @@
-import React, { useState } from 'react';
-import Resource from './resource';
+import React, { useState, useRef, useEffect } from 'react';
 import ResourceDetails from './resource-details';
+import ResourceTile from './ResourceTile';
 
 export default function ResourceList({ resources }) {
   const [selectedResource, setSelectedResource] = useState();
+  const modalRef = useRef();
+
+  const handleClickOutside = (event) => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      setSelectedResource(null);
+    }
+  };
+
+  useEffect(() => {
+    if (selectedResource) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [selectedResource]);
 
   return (
     <>
-      <div className="relative w-full h-full">
-        <div className={`flex overflow-x-auto`}>
+      <div className="resource-list">
+        <div className="tiles">
           {resources.map((resource) => (
-            <Resource
+            <ResourceTile
               key={resource.title}
-              data={resource}
-              isSelected={selectedResource && selectedResource.title === resource.title}
+              resource={resource}
               onClick={() => setSelectedResource(resource)}
             />
           ))}
         </div>
-        <div className="absolute z-20 top-0 right-0 h-full w-16 bg-gradient-to-l from-fade to-transparent" />
       </div>
       {selectedResource && (
-        <div className="mt-4">
-          <ResourceDetails resource={selectedResource} onClose={() => setSelectedResource(null)} />
+        <div className="modal">
+          <div className="modal-content" ref={modalRef}>
+            <ResourceDetails resource={selectedResource} onClose={() => setSelectedResource(null)} />
+          </div>
         </div>
       )}
     </>

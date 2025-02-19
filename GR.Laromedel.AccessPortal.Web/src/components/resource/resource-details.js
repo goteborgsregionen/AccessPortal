@@ -10,76 +10,74 @@ export default function ResourceDetails({ resource, onClose }) {
   const copyLink = (link) => navigator.clipboard.writeText(link);
 
   return (
-    <div className="bg-primary rounded p-6 mb-12 w-11/12 text-primary">
-      <div className="flex justify-between items-start w-full">
+    <div className="resource-details">
+      <div className="header">
         <div>
-          <h4 className="text-2xl">{resource.title}</h4>
+          <h4>{resource.title}</h4>
           {/*<h5 className="text-lg">Lorem ipsum dolor sit amet</h5>*/}
         </div>
-        <button
-          onClick={onClose}
-          className="text-xl flex items-center uppercase text-close-primary hover:text-close-hover focus:outline-none"
-        >
+        <button onClick={onClose}>
           <CloseIcon />
-          <span className="mt-px ml-2">Stäng</span>
+          <span>Stäng</span>
         </button>
       </div>
 
-      <div className="flex mt-6 gap-8">
-        <div className="w-1/3">
-          <div className="flex items-center mb-3">
-            <p className="text-lg border-r border-gray-400 mr-2 pr-2">
+      <div className="resource-information">
+        <div className="left-section">
+          <div className="subjects-and-grade">
+            <p>
               {resource.subjects.map((subject) => subject)}
             </p>
-            <p className="text-lg border-r border-gray-400 mr-2 pr-2">
+            <p>
               {resource.grades.map((grade) => grade)}
             </p>
             {/*<MovieIcon />*/}
           </div>
-          <div className="mb-3">
+          <div className="contributors-and-language">
             {resource.contributors && (
-              <p className="mb-1">
-                <span className="font-thin">Författare:</span> {resource.contributors}
+              <p>
+                <span>Författare:</span> {resource.contributors}
               </p>
             )}
             <p>
-              <span className="font-thin">Språk:</span> {resource.languages}
+              <span>Språk:</span> {resource.languages}
             </p>
           </div>
-          <div className="border border-gray-300 p-2">
-            <p className="mb-1">
-              <span className="font-thin">Förlag:</span> {resource.supplierName}
-            </p>
-            <p className="mb-1">
-              <span className="font-thin">Upplaga:</span> {resource.edition}
+          <div className="publish-information">
+            <p>
+              <span>Förlag:</span> {resource.supplierName}
             </p>
             <p>
-              <span className="font-thin">Artikelnummer:</span> {resource.articleNumber}
+              <span>Upplaga:</span> {resource.edition}
+            </p>
+            <p>
+              <span>Artikelnummer:</span> {resource.articleNumber}
             </p>
           </div>
         </div>
-        <div className="w-2/3">
-          <div className="font-serif leading-normal overflow-y-scroll h-24 pr-6 mb-12">
+        <div className="right-section">
+          <div className="description">
             {parse(resource.description)}
           </div>
 
-          <div className="flex justify-end gap-4">
+          <div className="controls">
             <button
-              className="flex items-center text-xl gap-2 px-6 py-3 rounded bg-gray-200 text-green-600 hover:bg-gray-300 focus:outline-none focus:shadow-outline"
+              className="copy-button"
               onClick={() => copyLink(resource.resourceUri)}
             >
-              <CopyIcon />
+              <CopyIcon /> 
               Kopiera länk
             </button>
-
-            <a
-              href={`${apiUrl}/redirection/?url=${resource.resourceUri}`}
-              target="_blank"
-              className="flex items-center text-xl gap-2 px-6 py-3 rounded bg-green-600 hover:bg-green-700 text-white focus:outline-none focus:shadow-outline"
-            >
-              <ExternalLinkIcon />
-              Öppna lärresurs
-            </a>
+            <button className="open-resource-button">
+              <a
+                href={`${apiUrl}/redirection/?url=${resource.resourceUri}`}
+                target="_blank"
+                
+              >
+                <ExternalLinkIcon />
+                Öppna lärresurs
+              </a>
+            </button>
           </div>
         </div>
       </div>
