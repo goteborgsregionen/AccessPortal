@@ -35,6 +35,11 @@
       width: 80%;
     //   max-width: 500px;
       border-radius: 0.5rem; /* rounded */
+
+      @media (max-width: 768px) {
+        width: 100%;
+        padding: 0;
+      }
     }
 
     .close {

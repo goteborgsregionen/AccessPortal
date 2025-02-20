@@ -17,27 +17,29 @@ function WelcomeMessage({ name }) {
 
 function SearchInput() {
   return (
-    <div className="search-input">
+    <>
       <label htmlFor="search">Sök resurs</label>
-      <input
-        id="search"
-        placeholder="Sök"
-      />
-      <SearchIcon className="search-icon" />
-    </div>
+      <div className="search-input">     
+        <input
+          id="search"
+          placeholder="Sök"
+        />
+        <SearchIcon className="search-icon" />
+      </div>
+    </>
   );
 }
 
 export default function Header() {
-  const auth = useAuth();    
-  
+  const auth = useAuth();
+    
   return (
     <div role='header' className="header">
       <div className={`controls ${!auth ? 'centered' : ''}`}>
         <Link to="/">
           <img className="logo" src={logo} alt={"Göteborgsregionen"} />
         </Link>
-        <div>{auth && <SearchInput />}</div>
+        <div className='search-container'>{auth && <SearchInput />}</div>
       </div>
       {auth && auth.userData && <WelcomeMessage name={auth.userData.profile.name} />}
     </div>
