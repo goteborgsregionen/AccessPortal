@@ -2,10 +2,22 @@
   background-color: #f2da91;
   height: 10rem; 
   padding-top: 1.5rem; 
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  // position: fixed;
+  // bottom: 0;
+  //width: 100%;
   z-index: 1000;
+
+  .container {
+    padding-bottom: 0;
+    
+    @media (max-width: 768px) {    
+      padding-left: 1.5rem;
+    }  
+
+    @media (min-width: 1024px) and (max-width: 1035px) {
+      padding-left: 2.5rem;      
+    }
+  }
 }
 
 .footer-links {
