@@ -1,0 +1,206 @@
+@import './styles/footer';
+@import './styles/header';
+@import './styles/resourceTile';
+@import './styles/resourceList';
+@import './styles/resource-details';
+@import './styles/filter'; 
+
+:root {
+  @extend .base;
+}
+
+.base {
+  --color-bg-primary: #f6f8f8;
+  --color-bg-secondary: #ffffff;
+  --color-text-primary: #263635;
+  --color-welcome-msg: #a9cee0;
+  --color-button-close: #1a7167;
+  --color-button-hover: #114b47;
+  --color-text-accent: #2b6cb0;
+}
+
+.student {
+  --color-bg-primary: #0e1211;
+  --color-bg-secondary: #1f2524;
+  --color-text-primary: #fff;
+  --color-text-secondary: #0e1211;
+  --color-welcome-msg: #f4a38c;
+  --color-text-accent: #81e6d9;
+  --color-button-close: #fff;
+  --color-button-hover: #95d0c8;
+}
+
+@font-face {
+  font-family: 'Conduit';
+  src: url('./assets/fonts/a5a0edc0-b571-4275-9c51-3dfeba35b75a.eot');
+  src: url('./assets/fonts/a5a0edc0-b571-4275-9c51-3dfeba35b75a.eot') format('eot'),
+    url('./assets/fonts/a81af59b-a5d9-4e96-a7cc-919403c0d86c.woff2') format('woff2'),
+    url('./assets/fonts/e93ee223-5d52-4bdf-a113-c6c4c8936824.woff') format('woff'),
+    url('./assets/fonts/ccdadc2e-26c9-48a5-9c52-9c3cc58e9930.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Conduit';
+  src: url('./assets/fonts/45fa0132-0858-4e18-9594-5a070788a059.eot');
+  src: url('./assets/fonts/45fa0132-0858-4e18-9594-5a070788a059.eot') format('eot'),
+    url('./assets/fonts/0f250d3b-13fd-469c-a4ec-9f9984165dea.woff2') format('woff2'),
+    url('./assets/fonts/e924c59f-bc21-471f-ad1b-cefd0c1a6315.woff') format('woff'),
+    url('./assets/fonts/13b88c12-e5f0-46c4-932a-57fe881b7c46.ttf') format('truetype');
+  font-weight: 200;
+}
+
+.layout {
+  display: flex; /* flex */
+  flex-direction: column; /* flex-col */
+  min-height: 100vh; /* h-screen */
+  background-color: var(--color-bg-primary);
+  justify-content: space-between;
+}
+
+.container {
+  margin-left: auto; /* mx-auto */
+  margin-right: auto; /* mx-auto */
+  width: 64rem; /* w-256 */  
+}
+
+.box {
+  background-color: var(--color-bg-secondary);
+  margin-bottom: 20px;  
+
+  @media (max-width: 768px) {
+   margin-bottom: 0rem;   
+  }
+}
+
+.tag {
+  border-radius: 9999px; /* rounded-full */
+  padding-left: 0.75rem; /* px-3 */
+  padding-right: 0.75rem; /* px-3 */
+  padding-top: 0.25rem; /* py-1 */
+  padding-bottom: 0.25rem; /* py-1 */
+  margin-right: 0.5rem; /* mr-2 */
+  margin-bottom: 0.5rem; /* mb-2 */
+  display: flex; /* flex */
+  align-items: center; /* items-center */
+  justify-content: space-between; /* justify-between */
+
+  p {
+    margin-right: 0.5rem; /* mr-2 */
+    font-weight: 600; /* font-semibold */
+  }
+
+  button {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 700; /* font-bold */
+    outline: none; /* focus:outline-none */
+  }
+}
+
+.common-styles {
+  h1 {
+    font-size: 1.875rem; /* 30px */
+    font-weight: bold;
+    margin-bottom: 1rem; /* 16px */
+    align-self: flex-start; /* Align to the left */
+  }
+
+  p {
+    font-size: 1.125rem; /* 18px */
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.login-box {
+  width: 50%;
+  margin: 0 auto; /* Center the box horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the content horizontally */
+  @extend .common-styles;
+  button {
+    margin-top: 1em;
+    width: 100%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-size: 2rem; 
+    color: white;
+    background-color: #165F59;
+  }
+}
+
+.common-box {
+  @extend .common-styles;
+  // Add any specific styles for common-box if needed
+}
+
+.resources {
+  margin-left: 1.5rem;
+  margin-top: 2rem;
+
+  h1 {
+    font-size: 2rem; /* text-2xl */
+    color: var(--color-text-primary);
+  }
+
+  h2 {
+    font-size: 1.5rem; /* text-xl */
+    margin: 1rem 0; /* my-4 */
+    color: var(--color-text-primary);
+  }
+
+  p {
+    margin: 1rem 0; /* my-4 */
+    color: var(--color-text-primary);
+  }
+
+  .subject {
+    margin-bottom: 2rem; /* mb-8 */
+    margin-left: 1rem; /* ml-4 */
+
+    @media (max-width: 768px) {
+      margin-bottom: 0rem auto;       
+     }
+  }
+}
+
+@media (max-width: 768px) {
+  .resources {
+    margin-left: 0.5rem;
+  }
+
+  .resource-tile {
+    flex-direction: column; /* Stack elements vertically on smaller screens */
+  }
+}
+
+.primary-button {
+  background-color: #006459; 
+  color: white;
+  &:hover {
+    background-color: rgba(33, 33, 33, 0.8); 
+  }
+
+  svg {
+    display: inline-block;
+    padding-right: 0.25rem;
+  }
+}
+
+.secondary-button {
+  background-color: white;
+  color: #006459; 
+  border: 1px solid #006459;
+  &:hover {
+    border-color: #29A599;
+    color: rgba(33, 33, 33, 0.8); 
+  }
+
+  svg {
+    display: inline-block;
+    padding-right: 0.25rem;
+  }
+}

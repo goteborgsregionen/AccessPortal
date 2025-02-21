@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Logout from './components/logout';
-import Login from './components/login';
 import Header from './components/header';
 import Footer from './components/footer';
 import Box from './components/common/box';
@@ -37,7 +35,7 @@ function AuthenticatedApp() {
           </Container>
           <Footer />
         </Layout>
-      </AuthContainer>
+       </AuthContainer>
     </AuthProvider>
   );
 }
@@ -46,7 +44,6 @@ function UnauthenticatedApp() {
   return (
     <>
       <Container>
-        <Login />
         <Header />
         <Box>
           <Switch>

@@ -31,12 +31,12 @@ export default function Filter({ subjects, ages, categories }) {
   ];
 
   return (
-    <div className="rounded bg-gray-200 mb-8 p-4">
-      <h2 className="text-xl font-semibold mb-6">Jag är intresserad av</h2>
-      <div className="flex justify-between">
-        <div className="w-1/2">
+    <div className="filter">
+      <h2>Jag är intresserad av</h2>
+      <div className="filter-categories">
+        <div className="filter-selected">
           {filterCategories.map((category) => (
-            <ul className="flex mb-2 flex-wrap">
+            <ul className="tags">
               {category.selectedOptions.map((option) => (
                 <Tag
                   color={category.color}
@@ -49,7 +49,7 @@ export default function Filter({ subjects, ages, categories }) {
             </ul>
           ))}
         </div>
-        <div className="flex w-1/2 justify-between">
+        <div className="filter-options">
           {filterCategories.map(({ title, options, selectedOptions, onSelect }) => (
             <FilterCategory
               name={title}
@@ -65,13 +65,13 @@ export default function Filter({ subjects, ages, categories }) {
 
 function FilterCategory({ name, options, onSelect }) {
   return (
-    <div className="w-1/3 border-l border-black pl-4">
-      <h3 className="uppercase mb-3 font-semibold">{name}</h3>
+    <div className="filter-category">
+      <h3>{name}</h3>
       <ul>
         {options.map((option) => (
           <li
             role="button"
-            className="mb-2 cursor-pointer font-semibold select-none"
+            className="filter-option"
             onClick={() => onSelect(option)}
           >
             {option}
