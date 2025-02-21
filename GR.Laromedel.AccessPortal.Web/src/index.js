@@ -1,10 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
-import './tailwind.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Logout from './components/logout';
-import Login from './components/login';
 import Header from './components/header';
 import Footer from './components/footer';
 import Box from './components/common/box';
