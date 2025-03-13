@@ -1,0 +1,18 @@
+.footer {
+  background-color: #f2da91;
+  height: 10rem; 
+  padding-top: 1.5rem; 
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.footer-links {
+  font-size: 1.125rem; /* text-lg */
+  color: black;
+
+  li {
+    margin-bottom: 0.5rem; /* mb-2 */
+  }
+}

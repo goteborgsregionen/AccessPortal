@@ -1,0 +1,75 @@
+.resource-tile {
+  margin: 1.5em;
+  width: 100%;
+  max-width: 500px; /* Ensure resource tile does not exceed 500px */
+  display: flex;
+  flex-direction: row; /* Stack elements horizontally */
+  justify-content: space-between; /* Ensure buttons align to the bottom */
+
+  @media (max-width: 1279px) {
+    flex-direction: column; /* Stack elements vertically on smaller screens */
+  }
+
+  .image-and-info {
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+
+    .image {
+      position: relative; /* relative */
+      overflow: hidden; /* overflow-hidden */
+      display: block; /* block */
+      width: 100%; /* Ensure image scales with container width */
+      height: 250px; /* Maintain height */
+      background-color: darkslategrey; /* Fill out with black */
+      object-fit: contain; /* Maintain aspect ratio */
+      margin-bottom: 0.5rem; /* mb-2 */
+      flex: none; /* flex-none */
+      border-radius: 0.5rem; /* rounded-lg */
+      cursor: pointer; /* cursor-pointer */
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* shadow-inner */
+    }
+    
+    .info {
+      margin-left: 0.25rem; /* ml-1 */
+      color: var(--color-text-primary); /* text-primary */
+      
+      h3 {
+        font-size: 1.25rem; /* text-xl */ 
+      }
+
+      p {
+        margin-top: 0.25rem;
+        font-size: 1rem;
+      }
+    } 
+  }
+
+  .buttons {
+    display: flex;
+    gap: 0.25rem; /* gap-2 */
+    flex-direction: column; /* Stack buttons vertically */
+
+    @media (max-width: 1279px) {
+      flex-direction: row; /* Stack elements horizontally on smaller screens */
+    }
+
+    button {       
+      align-items: center; /* items-center */
+      justify-content: center; /* Center contents */
+      font-size: 1.15rem; /* text-xl */
+      padding: 0.5rem 1rem; 
+      border-radius: 0.5rem; /* rounded */
+      margin-left: 0.5rem;
+      margin-bottom: 0.5rem;
+      white-space: nowrap; /* Ensure text is always on one row */
+        
+      &:focus {
+        outline: none; /* focus:outline-none */
+        box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5); /* focus:shadow-outline */
+      }
+    }    
+  }
+
+
+}

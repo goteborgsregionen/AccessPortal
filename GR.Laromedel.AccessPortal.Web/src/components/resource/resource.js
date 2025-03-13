@@ -3,7 +3,7 @@ import React from 'react';
 export default function Resource({ data, isSelected, onClick }) {
 
   const imgUrl = (src) => {
-    if (src.indexOf("goteborgsregionen.se/") >= 0 || src.startsWith("data:image") || src.startsWith("/")) {
+    if (src?.indexOf("goteborgsregionen.se/") >= 0 || src?.startsWith("data:image") || src?.startsWith("/")) {
       return src;
     }
 
