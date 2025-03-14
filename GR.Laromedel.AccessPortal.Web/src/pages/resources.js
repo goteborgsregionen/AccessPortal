@@ -5,7 +5,8 @@ import { useAuth } from 'oidc-react';
 import apiUrl from '../utilities/apiUrl';
 
 export default () => {
-  const [groupedResources, setGroupedResources] = useState([]);
+  //const [groupedResources, setGroupedResources] = useState([]);
+  const [resources, setResources] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const auth = useAuth();
@@ -19,8 +20,17 @@ export default () => {
         },
       });
       const resources = await response.json();
-     
-      setGroupedResources(groupResourcesBySubject(resources));
+      resources.sort(function (a, b) {
+        if (a.title < b.title) {
+          return -1;
+        }
+        if (a.title > b.title) {
+          return 1;
+        }
+        return 0;
+      });
+      setResources(resources);
+      //setGroupedResources(groupResourcesBySubject(resources));
       setIsLoading(false);
     };
 
@@ -34,16 +44,17 @@ export default () => {
         <>
           <p>Laddar dina lärresurser ...</p>
         </>}
-      {!isLoading && groupedResources.length == 0 &&
+      {!isLoading && resources.length == 0 &&
         <>
           <p>Vi kunde tyvärr inte hitta några lärresurser du har tillgång till.</p>
         </>}
-      {groupedResources.map(({ subject, resources }) => (
+        <ResourceList resources={resources} />
+      {/* {groupedResources.map(({ subject, resources }) => (
         <div key={subject} className="subject">
           <h2>{subject ? subject : 'Övriga ämnen'}</h2>
           <ResourceList resources={resources} />
         </div>
-      ))}
+      ))} */}
     </div>
   );
 };

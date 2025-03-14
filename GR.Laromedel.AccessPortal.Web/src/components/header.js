@@ -18,14 +18,14 @@ function WelcomeMessage({ name }) {
 function SearchInput() {
   return (
     <>
-      <label htmlFor="search">Sök resurs</label>
+      {/* <label htmlFor="search">Sök resurs</label>
       <div className="search-input">     
         <input
           id="search"
           placeholder="Sök"
         />
         <SearchIcon className="search-icon" />
-      </div>
+      </div> */}
     </>
   );
 }

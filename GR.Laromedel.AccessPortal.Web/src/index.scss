@@ -50,6 +50,21 @@
   font-weight: 200;
 }
 
+body {
+  background-color: #f5f5f5;
+}
+
+.app-content {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+
+  .container {
+    flex: 1;
+  }
+}
+
 .layout {
   display: flex; /* flex */
   flex-direction: column; /* flex-col */
@@ -107,16 +122,6 @@
     }
   }
 
-
-.footer {
-  background-color: #f2da91;
-  height: 10rem; 
-  padding-top: 1.5rem; 
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
 .common-styles {
   h1 {
     font-size: 1.875rem; /* 30px */
@@ -127,6 +132,8 @@
 
   p {
     font-size: 1.125rem; /* 18px */
+    align-self: flex-start;
+    margin-bottom: 1rem;
   }
 
   a {
@@ -141,6 +148,7 @@
   flex-direction: column;
   align-items: center; /* Center the content horizontally */
   @extend .common-styles;
+
   button {
     margin-top: 1em;
     width: 100%;
@@ -158,8 +166,6 @@
 }
 
 .resources {
-  margin-left: 1.5rem;
-  margin-top: 2rem;
 
   h1 {
     font-size: 2rem; /* text-2xl */
@@ -179,7 +185,6 @@
 
   .subject {
     margin-bottom: 2rem; /* mb-8 */
-    margin-left: 1rem; /* ml-4 */
 
     @media (max-width: 768px) {
       margin-bottom: 0rem auto;       

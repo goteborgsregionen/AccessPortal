@@ -26,7 +26,7 @@ export default function ResourceList({ resources }) {
   return (
     <>
       <div className="resource-list">
-        <div className="tiles">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {resources.map((resource) => (
             <ResourceTile
               key={resource.title}

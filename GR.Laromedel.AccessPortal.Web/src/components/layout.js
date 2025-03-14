@@ -10,5 +10,5 @@ export default function Layout({ children }) {
   React.useEffect(() => {
     setTheme("base");
   }, []);
-  return <div className="bg-primary min-h-screen">{children}</div>;
+  return <>{children}</>;
 }
