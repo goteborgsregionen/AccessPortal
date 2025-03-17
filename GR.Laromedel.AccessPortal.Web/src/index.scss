@@ -50,16 +50,42 @@
   font-weight: 200;
 }
 
+body {
+  background-color: #f5f5f5;
+}
+
+.app-content {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+
+  .container {
+    flex: 1;
+  }
+}
+
+.layout {
+  display: flex; /* flex */
+  flex-direction: column; /* flex-col */
+  min-height: 100vh; /* h-screen */
+  background-color: var(--color-bg-primary);
+  justify-content: space-between;
+}
+
 .container {
   margin-left: auto; /* mx-auto */
   margin-right: auto; /* mx-auto */
-  width: 64rem; /* w-256 */
-  padding-bottom: 12rem; /* Ensure container doesn't cover footer */
+  width: 64rem; /* w-256 */  
 }
 
 .box {
   background-color: var(--color-bg-secondary);
   margin-bottom: 20px;  
+
+  @media (max-width: 768px) {
+   margin-bottom: 0rem;   
+  }
 }
 
 .tag {
@@ -73,7 +99,7 @@
   display: flex; /* flex */
   align-items: center; /* items-center */
   justify-content: space-between; /* justify-between */
-  
+
   p {
     margin-right: 0.5rem; /* mr-2 */
     font-weight: 600; /* font-semibold */
@@ -95,25 +121,6 @@
       width: 1rem; /* w-4 */
     }
   }
-}
-
-.footer {
-  background-color: #f2da91;
-  height: 10rem; 
-  padding-top: 1.5rem; 
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
-.footer-links {
-  font-size: 1.125rem; /* text-lg */
-  color: black;
-
-  li {
-    margin-bottom: 0.5rem; /* mb-2 */
-  }
-}
 
 .common-styles {
   h1 {
@@ -125,6 +132,8 @@
 
   p {
     font-size: 1.125rem; /* 18px */
+    align-self: flex-start;
+    margin-bottom: 1rem;
   }
 
   a {
@@ -139,6 +148,7 @@
   flex-direction: column;
   align-items: center; /* Center the content horizontally */
   @extend .common-styles;
+
   button {
     margin-top: 1em;
     width: 100%;
@@ -156,8 +166,6 @@
 }
 
 .resources {
-  margin-left: 1.5rem;
-  margin-top: 2rem;
 
   h1 {
     font-size: 2rem; /* text-2xl */
@@ -177,11 +185,18 @@
 
   .subject {
     margin-bottom: 2rem; /* mb-8 */
-    margin-left: 1rem; /* ml-4 */
+
+    @media (max-width: 768px) {
+      margin-bottom: 0rem auto;       
+     }
   }
 }
 
 @media (max-width: 768px) {
+  .resources {
+    margin-left: 0.5rem;
+  }
+
   .resource-tile {
     flex-direction: column; /* Stack elements vertically on smaller screens */
   }

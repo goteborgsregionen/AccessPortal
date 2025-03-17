@@ -29,7 +29,7 @@ const ResourceTile = ({ resource, onClick, isDetailsShown }) => {
       href={isDetailsShown ? '' : `${apiUrl}/redirection/?url=${resource.resourceUri}`}
       target="_blank"
     >
-      <div className="resource-tile">
+      <div className="resource-tile">    
         <div className="image-and-info">
           <img
             src={imgUrl(resource.coverImageFull)}
@@ -38,6 +38,7 @@ const ResourceTile = ({ resource, onClick, isDetailsShown }) => {
           />
 
           <div className="info">
+            <p>{resource.subjects.join(", ")}</p>
             <h3>{resource.title}</h3>
             <p>
               <span>Förlag:</span> {resource.supplierName}

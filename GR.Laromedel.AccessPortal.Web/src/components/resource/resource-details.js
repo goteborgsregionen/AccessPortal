@@ -11,7 +11,7 @@ export default function ResourceDetails({ resource, onClose }) {
 
   return (
     <div className="resource-details">
-      <div className="header">
+      <div className="details-header">
         <div>
           <h4>{resource.title}</h4>
           {/*<h5 className="text-lg">Lorem ipsum dolor sit amet</h5>*/}
